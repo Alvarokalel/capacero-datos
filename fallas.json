@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.4",
+  "version": "2026.11.28",
   "categorias": [
     "Adhesión",
     "Extrusión",
@@ -83,14 +83,15 @@
         "no se adhiere",
         "no se queda pegad",
         "se arrastra",
-        "primera capa",
         "adherencia",
         "se levanta todo",
         "se despega de la cama",
         "se despega la pieza",
         "no se pega",
         "se suelta de la cama",
-        "no agarra"
+        "no agarra",
+        "arrastra el filamento",
+        "boquilla arrastra"
       ]
     },
     {
@@ -157,7 +158,10 @@
         "se levanta la pieza",
         "se enrosca la base",
         "se dobla la base",
-        "despega de las orillas"
+        "despega de las orillas",
+        "despegan las orillas",
+        "se despegan las orillas",
+        "orillas de la pieza se"
       ]
     },
     {
@@ -224,7 +228,9 @@
         "hebras",
         "hilitos",
         "barbas",
-        "cabellos"
+        "cabellos",
+        "pelitos",
+        "pelusa"
       ]
     },
     {
@@ -288,7 +294,15 @@
         "falta plastico",
         "sub extrusion",
         "subextrusion",
-        "lineas separadas"
+        "lineas separadas",
+        "porosa",
+        "poroso",
+        "huequitos",
+        "agujeritos en las paredes",
+        "poco plastico",
+        "poco material",
+        "sale poco",
+        "sale muy poco"
       ]
     },
     {
@@ -332,7 +346,11 @@
         "grumos en las paredes",
         "sobre extrusion",
         "sobreextrusion",
-        "demasiado plastico"
+        "demasiado plastico",
+        "mucho plastico",
+        "sale mucho plastico",
+        "sale demasiado plastico",
+        "demasiado material"
       ]
     },
     {
@@ -393,7 +411,11 @@
         "boquilla tapada",
         "tapada",
         "atascad",
-        "no sale nada"
+        "no sale nada",
+        "se tapo",
+        "tapo la boquilla",
+        "se atoro la boquilla",
+        "no extrude"
       ]
     },
     {
@@ -453,7 +475,14 @@
         "se movio de lado",
         "se desfaso",
         "capas chuecas",
-        "se corrio"
+        "se corrio",
+        "se movieron de lado",
+        "capas se movieron",
+        "movieron las capas",
+        "se movio la pieza a la mitad",
+        "se fue de lado",
+        "de lado a media",
+        "se chueco de golpe"
       ]
     },
     {
@@ -496,7 +525,9 @@
         "mas ancha abajo",
         "sale mas ancha",
         "base sale mas ancha",
-        "abajo mas ancha"
+        "abajo mas ancha",
+        "primera capa quedo muy ancha",
+        "primera capa muy ancha"
       ]
     },
     {
@@ -521,7 +552,7 @@
           }
         },
         {
-          "t": "Mide resonancias con acelerómetro (SHAPER_CALIBRATE) y guarda el input shaper.",
+          "t": "Mide resonancias: en Creality de fábrica (K1, K1C, KE, K2) corre la calibración automática desde la pantalla, que incluye el input shaping; en Klipper con consola usa SHAPER_CALIBRATE con acelerómetro y guarda con SAVE_CONFIG.",
           "si": {
             "fw": "klipper"
           }
@@ -540,6 +571,15 @@
           "si": {
             "cin": "cama-y"
           }
+        },
+        {
+          "t": "En Prusa MK4S, CORE One y XL el input shaper ya viene activo: actualiza el firmware y no subas la aceleración de pared externa por encima de lo que trae el perfil.",
+          "si": {
+            "fw": "prusa"
+          }
+        },
+        {
+          "t": "Baja la velocidad de la pared exterior a 80–150 mm/s y revisa que la impresora esté en una mesa firme que no se mueva."
         }
       ],
       "ajustes": [
@@ -643,7 +683,11 @@
         "cuelga",
         "overhang",
         "bridge",
-        "colgand"
+        "colgand",
+        "en angulo",
+        "abajo en angulo",
+        "parte de abajo sale fea",
+        "sale rizada"
       ]
     },
     {
@@ -685,7 +729,107 @@
         "grieta",
         "se parte entre capas",
         "se rompe en capas",
-        "fisura"
+        "fisura",
+        "capas se despegan",
+        "entre si",
+        "capas se abren",
+        "se abren las capas",
+        "separa entre capas",
+        "se separa entre",
+        "se separan entre capas",
+        "entre capa y capa"
+      ]
+    },
+    {
+      "id": "pieza-debil",
+      "nombre": "La pieza se ve bien pero se rompe con poca fuerza",
+      "cat": "Estructura",
+      "sintomas": [
+        "Se ve bonita pero se parte al apretarla o usarla",
+        "Se quiebra con un golpe o al atornillarla",
+        "Truena por las capas o por partes delgadas"
+      ],
+      "causas": [
+        "Pocas paredes y relleno bajo: la fuerza la aguantan las paredes",
+        "La fuerza va a lo largo de las capas (orientación)",
+        "Temperatura baja o ventilador alto: las capas no se funden bien entre sí",
+        "Filamento húmedo o viejo (el PLA se vuelve quebradizo)",
+        "Material muy rígido para el uso (el PLA es frágil a golpes)"
+      ],
+      "pasos": [
+        {
+          "t": "Gira la pieza en el slicer para que la fuerza no jale las capas por separado: lo que va a cargar peso debe quedar acostado, no parado."
+        },
+        {
+          "t": "Sube a 4–6 paredes y 25–40 % de relleno giroide o cúbico; las paredes dan más fuerza que el relleno."
+        },
+        {
+          "t": "Sube 5–10 °C la boquilla y baja el ventilador (PLA 60–80 %, PETG 30–50 %) para que las capas se peguen mejor."
+        },
+        {
+          "t": "Seca el filamento (PLA 50 °C, PETG 65 °C por 6–8 h); si al doblarlo se troza, está húmedo o viejo."
+        },
+        {
+          "t": "Si es una pieza de uso (soportes, ganchos, clips), imprímela en PETG o PLA+ en vez de PLA normal."
+        },
+        {
+          "t": "Usa capa de 0.20 mm o menos y redondea esquinas internas filosas en el diseño: ahí empiezan las fracturas."
+        }
+      ],
+      "ajustes": [
+        "wall_loops: 4–6",
+        "sparse_infill_density: 25–40 % (giroide)",
+        "Temperatura: +5–10 °C",
+        "Ventilador: bajar",
+        "Orientación: carga perpendicular a las capas"
+      ],
+      "claves": [
+        "se rompe facil",
+        "se rompio facil",
+        "se parte facil",
+        "se partio",
+        "se quiebra facil",
+        "se quebro",
+        "se rompe con poca fuerza",
+        "poca fuerza",
+        "con un poco de fuerza",
+        "fragil la pieza",
+        "pieza fragil",
+        "pieza debil",
+        "no aguanta",
+        "no resiste",
+        "poco resistente",
+        "se truena la pieza",
+        "se trono",
+        "se rompe al apretar",
+        "se rompe al usar",
+        "se rompe al atornillar",
+        "se rompio al primer uso",
+        "quedo debil",
+        "quedo fragil",
+        "bien esteticamente pero",
+        "se ve bien pero se rompe",
+        "resistencia",
+        "que aguante mas",
+        "hacerla mas fuerte",
+        "mas resistente",
+        "al atornillar",
+        "se rompio al",
+        "se quebro al",
+        "se rompe al colgar",
+        "se parte",
+        "muy debil",
+        "se rompio",
+        "ponerle peso",
+        "con peso se",
+        "al abrirlo",
+        "al doblarlo se",
+        "truena cuando",
+        "truena al",
+        "se rompa tan facil",
+        "no se rompa",
+        "se rompe tan facil",
+        "dure mas"
       ]
     },
     {
@@ -728,7 +872,14 @@
         "hoyos arriba",
         "huecos en la tapa",
         "tapa con hoyos",
-        "cara de arriba con hoyos"
+        "cara de arriba con hoyos",
+        "cara de arriba",
+        "superficie superior",
+        "tapa de arriba",
+        "hoyos en la cara",
+        "arriba se ve el relleno",
+        "arriba se ve",
+        "tapa no cierra"
       ]
     },
     {
@@ -842,7 +993,15 @@
         "soporte pegado",
         "no se quita el soporte",
         "soportes dificiles",
-        "soporte se rompe"
+        "soporte se rompe",
+        "quitar los soportes",
+        "quitar el soporte",
+        "soportes muy pegados",
+        "soportes quedan pegados",
+        "soportes pegados",
+        "soporte no sale",
+        "rompe la pieza al quitar",
+        "no se desprende el soporte"
       ]
     },
     {
@@ -887,7 +1046,22 @@
         "sale mas grande",
         "agujeros salen mas chicos",
         "agujeros quedan chicos",
-        "hoyos chicos"
+        "hoyos chicos",
+        "tornillo no entra",
+        "no entra en el agujero",
+        "no cabe el tornillo",
+        "quedan apretadas",
+        "no ajusta",
+        "ensambla",
+        "no embona",
+        "no ajustan",
+        "no ensambla",
+        "no embonan",
+        "no entran",
+        "medidas no coinciden",
+        "no coincide con el diseno",
+        "no coinciden con el diseno",
+        "mide diferente"
       ]
     },
     {
@@ -909,6 +1083,12 @@
         },
         {
           "t": "Guárdalo en caja hermética con sílica gel; imprime desde caja seca si vives en clima húmedo."
+        },
+        {
+          "t": "Si no tienes secadora, imprime directo desde una caja seca o pon la bobina sobre la cama caliente a 60 °C por unas horas, tapada con una caja."
+        },
+        {
+          "t": "Confirma que era humedad: imprime un tramo con el filamento ya seco; si desaparecen los chasquidos y los hilos, era eso."
         }
       ],
       "ajustes": [
@@ -968,7 +1148,13 @@
         "primera capa fea",
         "aplastad",
         "z offset",
-        "zoffset"
+        "zoffset",
+        "transparente y aplastada",
+        "primera capa transparente",
+        "primera capa aplastada",
+        "primera capa con surcos",
+        "primera capa quedo rugosa",
+        "primera capa quedo fea"
       ]
     },
     {
@@ -1110,7 +1296,13 @@
         "voladizo se enrosca",
         "bordes se enroscan",
         "orillas del voladizo",
-        "se levantan los voladizos"
+        "se levantan los voladizos",
+        "bordes del voladizo",
+        "voladizo se levant",
+        "orillas del voladizo se",
+        "voladizos se curvan",
+        "se curvan hacia arriba",
+        "voladizo se curva"
       ],
       "sintomas": [
         "Las orillas de voladizos se levantan",
@@ -1157,7 +1349,11 @@
         "esquinas redonde",
         "esquinas con bulto",
         "bulging",
-        "esquinas gordas"
+        "esquinas gordas",
+        "no salen filosas",
+        "esquinas redondas",
+        "salen redondas",
+        "esquinas salen redondeadas"
       ],
       "sintomas": [
         "Las esquinas sobresalen",
@@ -1243,7 +1439,7 @@
           }
         },
         {
-          "t": "Revisa el log (klippy.log) para ver el motivo exacto.",
+          "t": "Revisa el motivo: en Creality de fábrica aparece en la pantalla o en Creality Print; en Klipper con consola, en klippy.log.",
           "si": {
             "fw": "klipper"
           }
@@ -1272,7 +1468,11 @@
         "temperatura baja de golpe",
         "error termico",
         "maxtemp",
-        "mintemp"
+        "mintemp",
+        "sube y baja",
+        "temperatura inestable",
+        "la temperatura sube",
+        "temperatura no se mantiene"
       ],
       "sintomas": [
         "La impresora muestra error de calentamiento",
@@ -1301,7 +1501,7 @@
           }
         },
         {
-          "t": "Calibra el PID: PID_CALIBRATE HEATER=extruder TARGET=220 y SAVE_CONFIG.",
+          "t": "Calibra el PID: en Klipper con consola usa PID_CALIBRATE HEATER=extruder TARGET=220 y SAVE_CONFIG; en Creality de fábrica corre la autocomprobación desde la pantalla y, si el error sigue, revisa el termistor y su cable.",
           "si": {
             "fw": "klipper"
           }
@@ -1373,15 +1573,15 @@
       "claves": [
         "se rompe el filamento",
         "quebradizo",
-        "se quiebra",
-        "fragil",
         "se troza",
         "se truena el filamento",
         "se rompe solo",
         "se rompe solito",
         "filamento quebradizo",
         "se quiebra el filamento",
-        "filamento se rompe"
+        "filamento se rompe",
+        "filamento fragil",
+        "filamento se troza"
       ],
       "sintomas": [
         "El filamento se parte en el tubo o en el carrete",
@@ -1469,7 +1669,11 @@
         "no llega a temperatura",
         "tarda en calentar",
         "heatbed",
-        "cama tibia"
+        "cama tibia",
+        "tarda mucho en calentar",
+        "cama tarda",
+        "calienta lento",
+        "la cama no llega"
       ],
       "sintomas": [
         "La temperatura de cama no sube",
@@ -1514,7 +1718,12 @@
         "no carga el filamento",
         "atorado en el ams",
         "cambio de color falla",
-        "no jala"
+        "no jala",
+        "falla el cambio de color",
+        "cambio de filamento falla",
+        "no cambia de color",
+        "se atora en el ams",
+        "se atora el filamento en el"
       ],
       "sintomas": [
         "Error al cargar o descargar",
@@ -1566,7 +1775,12 @@
         "no sale de la cama",
         "no la puedo despegar",
         "no se puede despegar",
-        "esta muy pegada"
+        "esta muy pegada",
+        "pegadisim",
+        "super pegad",
+        "bien pegad",
+        "quedo pegad",
+        "se quedo pegad"
       ],
       "sintomas": [
         "Hay que hacer palanca para quitarla",
@@ -1641,7 +1855,15 @@
         "no imprime partes finas",
         "faltan detalles",
         "letras no salen",
-        "texto no sale"
+        "texto no sale",
+        "letras pequenas",
+        "letras chicas",
+        "texto pequeno",
+        "detalles pequenos",
+        "partes delgadas no",
+        "partes delgadas",
+        "no imprime las partes",
+        "no salen las partes finas"
       ],
       "sintomas": [
         "Partes delgadas no aparecen en el slicer",
@@ -1726,7 +1948,11 @@
         "hueco horizontal",
         "capa saltada",
         "una capa no salio",
-        "franja vacia"
+        "franja vacia",
+        "faltan unas capas",
+        "capas en medio",
+        "falta una capa",
+        "faltaron capas"
       ],
       "sintomas": [
         "Una franja horizontal sin material",
@@ -1763,7 +1989,14 @@
         "punta derretida",
         "chorreado",
         "sobrecalent",
-        "pierde forma"
+        "pierde forma",
+        "pierden forma",
+        "partes chicas",
+        "partes pequenas se",
+        "se deforman las puntas",
+        "derriti",
+        "se derritio",
+        "se derrite"
       ],
       "sintomas": [
         "Puntas o partes pequeñas sin forma",
@@ -1804,7 +2037,9 @@
         "se inclina",
         "pieza alta se cae",
         "se dobla la pieza alta",
-        "se cae la pieza"
+        "se cae la pieza",
+        "pieza alta se movio",
+        "torre se movio"
       ],
       "sintomas": [
         "Las capas superiores salen chuecas",
@@ -1933,7 +2168,12 @@
         "empieza sin material",
         "inicio de linea",
         "despues de retraer",
-        "falta al empezar"
+        "falta al empezar",
+        "empieza con un hueco",
+        "empieza con hueco",
+        "al empezar",
+        "despues de los viajes",
+        "inicio de cada linea"
       ],
       "sintomas": [
         "Cada línea empieza delgada o con hueco",
@@ -1968,8 +2208,14 @@
         "mancha de color",
         "se mezclan los colores",
         "color sucio",
-        "cambio de color",
-        "residuo de otro color"
+        "residuo de otro color",
+        "colores mezclados",
+        "restos del color",
+        "color anterior",
+        "sale sucio",
+        "ensucia",
+        "se ensucia",
+        "contamina el color"
       ],
       "sintomas": [
         "El color nuevo trae restos del anterior",
@@ -2004,7 +2250,14 @@
         "soportes caidos",
         "no salen los soportes",
         "soporte se despega",
-        "soporte espagueti"
+        "soporte espagueti",
+        "soportes se caen",
+        "soportes se despegan",
+        "soportes se doblan",
+        "soportes hacen espagueti",
+        "soporte se cayo",
+        "soportes se cayeron",
+        "soporte quedo espagueti"
       ],
       "sintomas": [
         "Soportes que se doblan o despegan",
@@ -2041,7 +2294,12 @@
         "mide menos",
         "mide mas de alto",
         "z no coincide",
-        "mas chaparra"
+        "mas chaparra",
+        "mas baja",
+        "mas bajita",
+        "salio baja",
+        "salio mas chica de alto",
+        "mide menos de alto"
       ],
       "sintomas": [
         "La pieza mide más o menos de alto que el diseño"
