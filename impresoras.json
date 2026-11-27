@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.5",
+  "version": "2026.11.6",
   "actualizado": "2026-11-26",
   "nota": "Velocidades y flujo son valores prácticos y conservadores, no los máximos de publicidad. perfilBase debe coincidir con el nombre del perfil de proceso de sistema en tu slicer.",
   "impresoras": [
@@ -812,5 +812,5 @@
       "cerrada": "abierta"
     }
   ],
-  "actualizaciones": ""
+  "actualizaciones": "https://raw.githubusercontent.com/Alvarokalel/capacero-datos/main/"
 }
