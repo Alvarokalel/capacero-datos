@@ -1,471 +1,525 @@
 {
- "version": "2026.11.27",
- "fuente": "Calculadora_Impresion_3D_PETG.xlsx",
- "base": {
-  "materiales": [
-   {
-    "id": "petg",
-    "nombre": "PETG",
-    "rollo": 350,
-    "peso": 1000
-   },
-   {
-    "id": "pla",
-    "nombre": "PLA",
-    "rollo": 350,
-    "peso": 1000
-   }
+  "version": "2026.11.28",
+  "fuente": "Calculadora_Impresion_3D_PETG.xlsx",
+  "base": {
+    "materiales": [
+      {
+        "id": "petg",
+        "nombre": "PETG",
+        "rollo": 350,
+        "peso": 1000
+      },
+      {
+        "id": "pla",
+        "nombre": "PLA",
+        "rollo": 350,
+        "peso": 1000
+      }
+    ],
+    "kwh": 0.15,
+    "tarifa": 3.5,
+    "desgaste": 5,
+    "mPublico": 2.5,
+    "mRevendedor": 1.8,
+    "redondeo": 5
+  },
+  "insumos": [
+    {
+      "id": "aro",
+      "nombre": "Aro de llavero",
+      "precio": 1.5,
+      "nombre_en": "Keychain ring"
+    },
+    {
+      "id": "clicker",
+      "nombre": "Clicker",
+      "precio": 4.66,
+      "nombre_en": "Clicker"
+    },
+    {
+      "id": "mano",
+      "nombre": "Mano de obra",
+      "precio": 5,
+      "nombre_en": "Labor"
+    },
+    {
+      "id": "resina",
+      "nombre": "Resina",
+      "precio": 5,
+      "nombre_en": "Resin"
+    }
   ],
-  "kwh": 0.15,
-  "tarifa": 3.5,
-  "desgaste": 5,
-  "mPublico": 2.5,
-  "mRevendedor": 1.8,
-  "redondeo": 5
- },
- "insumos": [
-  {
-   "id": "aro",
-   "nombre": "Aro de llavero",
-   "precio": 1.5
-  },
-  {
-   "id": "clicker",
-   "nombre": "Clicker",
-   "precio": 4.66
-  },
-  {
-   "id": "mano",
-   "nombre": "Mano de obra",
-   "precio": 5
-  },
-  {
-   "id": "resina",
-   "nombre": "Resina",
-   "precio": 5
-  }
- ],
- "grupos": [
-  {
-   "nombre": "Llaveros",
-   "nota": "Precios de tiendas mexicanas en línea (3Dream Studio, Totopo, Sundara, Mapiverde), consultados 2026-11-27.",
-   "productos": [
+  "grupos": [
     {
-     "id": "m-llavero-personaje",
-     "nombre": "Llavero de personaje",
-     "detalle": "~5 cm; anime, Pokémon y videojuegos, el más común",
-     "g": 8,
-     "h": 0.6,
-     "insumos": {
-      "aro": 1
-     },
-     "ref": {
-      "pub": [
-       50,
-       120
+      "nombre": "Llaveros",
+      "nota": "Precios de tiendas mexicanas en línea (3Dream Studio, Totopo, Sundara, Mapiverde), consultados 2026-11-27.",
+      "productos": [
+        {
+          "id": "m-llavero-personaje",
+          "nombre": "Llavero de personaje",
+          "detalle": "~5 cm; anime, Pokémon y videojuegos, el más común",
+          "g": 8,
+          "h": 0.6,
+          "insumos": {
+            "aro": 1
+          },
+          "ref": {
+            "pub": [
+              50,
+              120
+            ],
+            "rev": [
+              30,
+              75
+            ]
+          },
+          "fuente": "3dreamstudio.com.mx",
+          "nombre_en": "Character keychain",
+          "detalle_en": "~5 cm; anime, Pokémon and video games, the most common"
+        },
+        {
+          "id": "m-llavero-personalizado",
+          "nombre": "Llavero personalizado con nombre",
+          "detalle": "~5 cm; regalo barato, se vende sobre pedido",
+          "g": 6,
+          "h": 0.5,
+          "insumos": {
+            "aro": 1
+          },
+          "ref": {
+            "pub": [
+              79,
+              100
+            ],
+            "rev": [
+              45,
+              55
+            ]
+          },
+          "fuente": "totopo.com.mx, mapiverde.com",
+          "nombre_en": "Custom name keychain",
+          "detalle_en": "~5 cm; cheap gift, sold made to order"
+        },
+        {
+          "id": "m-llavero-nfc",
+          "nombre": "Llavero con chip NFC",
+          "detalle": "~5 cm; comparte redes o playlist al acercar el celular",
+          "g": 8,
+          "h": 0.6,
+          "insumos": {
+            "aro": 1
+          },
+          "ref": {
+            "pub": [
+              50,
+              100
+            ],
+            "rev": [
+              30,
+              60
+            ]
+          },
+          "fuente": "3dreamstudio.com.mx, sundarashop.com.mx",
+          "nombre_en": "NFC chip keychain",
+          "detalle_en": "~5 cm; shares socials or a playlist when you tap a phone"
+        },
+        {
+          "id": "m-llavero-fidget",
+          "nombre": "Llavero fidget",
+          "detalle": "~5 cm; pieza móvil antiestrés, gusta a jóvenes",
+          "g": 10,
+          "h": 0.8,
+          "insumos": {
+            "aro": 1
+          },
+          "ref": {
+            "pub": [
+              100,
+              100
+            ],
+            "rev": [
+              55,
+              60
+            ]
+          },
+          "fuente": "3dreamstudio.com.mx",
+          "nombre_en": "Fidget keychain",
+          "detalle_en": "~5 cm; moving stress-relief piece, popular with teens"
+        }
       ],
-      "rev": [
-       30,
-       75
-      ]
-     },
-     "fuente": "3dreamstudio.com.mx"
+      "nombre_en": "Keychains",
+      "nota_en": "Prices from Mexican online stores (3Dream Studio, Totopo, Sundara, Mapiverde), checked on 2026-11-27."
     },
     {
-     "id": "m-llavero-personalizado",
-     "nombre": "Llavero personalizado con nombre",
-     "detalle": "~5 cm; regalo barato, se vende sobre pedido",
-     "g": 6,
-     "h": 0.5,
-     "insumos": {
-      "aro": 1
-     },
-     "ref": {
-      "pub": [
-       79,
-       100
+      "nombre": "Regalos y temporada navideña",
+      "nota": "Etsy México (precios en MXN, vendedores de varios países) y 3Dream Studio, consultados 2026-11-27.",
+      "productos": [
+        {
+          "id": "m-set-adornos-navidenos",
+          "nombre": "Set de adornos navideños",
+          "detalle": "Juego de 3 a 25 piezas; temporada de diciembre",
+          "g": 60,
+          "h": 4,
+          "insumos": {},
+          "ref": {
+            "pub": [
+              232,
+              565
+            ],
+            "rev": [
+              130,
+              350
+            ]
+          },
+          "fuente": "etsy.com/mx",
+          "nombre_en": "Christmas ornament set",
+          "detalle_en": "Set of 3 to 25 pieces; December season"
+        },
+        {
+          "id": "m-lampara-litofania",
+          "nombre": "Lámpara litofanía con foto",
+          "detalle": "~10–15 cm; regalo personalizado con foto",
+          "g": 60,
+          "h": 4,
+          "insumos": {},
+          "ref": {
+            "pub": [
+              216,
+              611
+            ],
+            "rev": [
+              120,
+              380
+            ]
+          },
+          "fuente": "etsy.com/mx",
+          "nombre_en": "Photo lithophane lamp",
+          "detalle_en": "~10–15 cm; personalized photo gift"
+        },
+        {
+          "id": "m-llavero-pareja",
+          "nombre": "Llaveros de pareja",
+          "detalle": "2 piezas ~5 cm; regalo para novios y amigos",
+          "g": 15,
+          "h": 1.2,
+          "insumos": {
+            "aro": 2
+          },
+          "ref": {
+            "pub": [
+              99,
+              300
+            ],
+            "rev": [
+              55,
+              185
+            ]
+          },
+          "fuente": "3dreamstudio.com.mx, sundarashop.com.mx",
+          "nombre_en": "Couple keychains",
+          "detalle_en": "2 pieces ~5 cm; gift for couples and friends"
+        },
+        {
+          "id": "m-mascota-personalizada",
+          "nombre": "Figura de mascota personalizada",
+          "detalle": "~10 cm con base; regalo emotivo bajo pedido",
+          "g": 120,
+          "h": 8,
+          "insumos": {},
+          "ref": {
+            "pub": [
+              750,
+              900
+            ],
+            "rev": [
+              415,
+              560
+            ]
+          },
+          "fuente": "3dreamstudio.com.mx",
+          "nombre_en": "Custom pet figure",
+          "detalle_en": "~10 cm with base; heartfelt made-to-order gift"
+        }
       ],
-      "rev": [
-       45,
-       55
-      ]
-     },
-     "fuente": "totopo.com.mx, mapiverde.com"
+      "nombre_en": "Gifts and Christmas season",
+      "nota_en": "Etsy México (prices in MXN, sellers from several countries) and 3Dream Studio, checked on 2026-11-27."
     },
     {
-     "id": "m-llavero-nfc",
-     "nombre": "Llavero con chip NFC",
-     "detalle": "~5 cm; comparte redes o playlist al acercar el celular",
-     "g": 8,
-     "h": 0.6,
-     "insumos": {
-      "aro": 1
-     },
-     "ref": {
-      "pub": [
-       50,
-       100
+      "nombre": "Figuras y juguetes articulados",
+      "nota": "Etsy México, 3Dream Studio, Sundara y El Arte 3D, consultados 2026-11-27.",
+      "productos": [
+        {
+          "id": "m-dragon-articulado",
+          "nombre": "Dragón articulado",
+          "detalle": "~30 cm; juguete flexible viral, muy reseñado",
+          "g": 60,
+          "h": 4,
+          "insumos": {},
+          "ref": {
+            "pub": [
+              278,
+              454
+            ],
+            "rev": [
+              155,
+              280
+            ]
+          },
+          "fuente": "etsy.com/mx",
+          "nombre_en": "Articulated dragon",
+          "detalle_en": "~30 cm; viral flexible toy, heavily reviewed"
+        },
+        {
+          "id": "m-huevo-dragon",
+          "nombre": "Huevo de dragón antiestrés",
+          "detalle": "~8 cm; fidget de escritorio con miles de reseñas",
+          "g": 40,
+          "h": 3,
+          "insumos": {},
+          "ref": {
+            "pub": [
+              245,
+              378
+            ],
+            "rev": [
+              135,
+              235
+            ]
+          },
+          "fuente": "etsy.com/mx",
+          "nombre_en": "Fidget dragon egg",
+          "detalle_en": "~8 cm; desk fidget with thousands of reviews"
+        },
+        {
+          "id": "m-figura-pokemon",
+          "nombre": "Figura Pokémon",
+          "detalle": "~8–12 cm; Pikachu, Bulbasaur, Charizard articulado",
+          "g": 80,
+          "h": 6,
+          "insumos": {},
+          "ref": {
+            "pub": [
+              200,
+              550
+            ],
+            "rev": [
+              110,
+              340
+            ]
+          },
+          "fuente": "3dreamstudio.com.mx",
+          "nombre_en": "Pokémon figure",
+          "detalle_en": "~8–12 cm; Pikachu, Bulbasaur, articulated Charizard"
+        },
+        {
+          "id": "m-figura-viral-brainrot",
+          "nombre": "Figura viral (Lirili Larila)",
+          "detalle": "~10 cm; personaje viral de redes sociales",
+          "g": 50,
+          "h": 4,
+          "insumos": {},
+          "ref": {
+            "pub": [
+              289,
+              319
+            ],
+            "rev": [
+              160,
+              200
+            ]
+          },
+          "fuente": "sundarashop.com.mx",
+          "nombre_en": "Viral figure (Lirili Larila)",
+          "detalle_en": "~10 cm; viral social media character"
+        },
+        {
+          "id": "m-figura-kitty-tejida",
+          "nombre": "Figura Kitty textura tejida",
+          "detalle": "11 cm; personaje tierno con acabado de tejido",
+          "g": 45,
+          "h": 3.5,
+          "insumos": {},
+          "ref": {
+            "pub": [
+              139,
+              169
+            ],
+            "rev": [
+              75,
+              105
+            ]
+          },
+          "fuente": "elarte3d.com.mx",
+          "nombre_en": "Knit-texture Kitty figure",
+          "detalle_en": "11 cm; cute character with a knitted finish"
+        }
       ],
-      "rev": [
-       30,
-       60
-      ]
-     },
-     "fuente": "3dreamstudio.com.mx, sundarashop.com.mx"
+      "nombre_en": "Figures and articulated toys",
+      "nota_en": "Etsy México, 3Dream Studio, Sundara and El Arte 3D, checked on 2026-11-27."
     },
     {
-     "id": "m-llavero-fidget",
-     "nombre": "Llavero fidget",
-     "detalle": "~5 cm; pieza móvil antiestrés, gusta a jóvenes",
-     "g": 10,
-     "h": 0.8,
-     "insumos": {
-      "aro": 1
-     },
-     "ref": {
-      "pub": [
-       100,
-       100
+      "nombre": "Gamer y escritorio",
+      "nota": "El Arte 3D, Etsy México y 3Dream Studio, consultados 2026-11-27.",
+      "productos": [
+        {
+          "id": "m-soporte-control-ps5",
+          "nombre": "Soporte para control PS5",
+          "detalle": "~8×6×6 cm; setup gamer, diseños GTA VI y personajes",
+          "g": 70,
+          "h": 4,
+          "insumos": {},
+          "ref": {
+            "pub": [
+              119,
+              340
+            ],
+            "rev": [
+              65,
+              210
+            ]
+          },
+          "fuente": "elarte3d.com.mx, etsy.com/mx",
+          "nombre_en": "PS5 controller stand",
+          "detalle_en": "~8×6×6 cm; gaming setup, GTA VI and character designs"
+        },
+        {
+          "id": "m-soporte-doble-control-audifonos",
+          "nombre": "Soporte doble control y audífonos",
+          "detalle": "~20 cm; organiza setup gamer completo",
+          "g": 180,
+          "h": 9,
+          "insumos": {},
+          "ref": {
+            "pub": [
+              507,
+              676
+            ],
+            "rev": [
+              280,
+              420
+            ]
+          },
+          "fuente": "etsy.com/mx",
+          "nombre_en": "Dual controller and headphone stand",
+          "detalle_en": "~20 cm; organizes a full gaming setup"
+        },
+        {
+          "id": "m-estuche-cartas-pokemon",
+          "nombre": "Estuche para mazo Pokémon TCG",
+          "detalle": "Caja para 60 cartas; auge del juego de cartas",
+          "g": 40,
+          "h": 2.5,
+          "insumos": {},
+          "ref": {
+            "pub": [
+              200,
+              200
+            ],
+            "rev": [
+              110,
+              125
+            ]
+          },
+          "fuente": "3dreamstudio.com.mx",
+          "nombre_en": "Pokémon TCG deck box",
+          "detalle_en": "Box for 60 cards; card game boom"
+        }
       ],
-      "rev": [
-       55,
-       60
-      ]
-     },
-     "fuente": "3dreamstudio.com.mx"
+      "nombre_en": "Gaming and desk",
+      "nota_en": "El Arte 3D, Etsy México and 3Dream Studio, checked on 2026-11-27."
+    },
+    {
+      "nombre": "Decoración y hogar",
+      "nota": "Macetopia, Etsy México, PFB3D y 3Dream Studio, consultados 2026-11-27.",
+      "productos": [
+        {
+          "id": "m-maceta-diseno",
+          "nombre": "Maceta de diseño para suculenta",
+          "detalle": "~8–10 cm; geométricas y texturas, decoración moderna",
+          "g": 90,
+          "h": 5,
+          "insumos": {},
+          "ref": {
+            "pub": [
+              150,
+              450
+            ],
+            "rev": [
+              80,
+              280
+            ]
+          },
+          "fuente": "macetopia.mx, etsy.com/mx",
+          "nombre_en": "Designer succulent planter",
+          "detalle_en": "~8–10 cm; geometric and textured, modern decor"
+        },
+        {
+          "id": "m-maceta-papel-arrugado",
+          "nombre": "Maceta textura papel arrugado",
+          "detalle": "10–13 cm; diseño viral para suculentas",
+          "g": 110,
+          "h": 6,
+          "insumos": {},
+          "ref": {
+            "pub": [
+              284,
+              446
+            ],
+            "rev": [
+              155,
+              275
+            ]
+          },
+          "fuente": "etsy.com/mx",
+          "nombre_en": "Crumpled-paper planter",
+          "detalle_en": "10–13 cm; viral design for succulents"
+        },
+        {
+          "id": "m-lampara-arte-sacro",
+          "nombre": "Lámpara LED arte sacro",
+          "detalle": "25 cm; Virgen de Guadalupe y santos, muy vendida",
+          "g": 200,
+          "h": 10,
+          "insumos": {},
+          "ref": {
+            "pub": [
+              650,
+              699
+            ],
+            "rev": [
+              360,
+              435
+            ]
+          },
+          "fuente": "pfb3d.com",
+          "nombre_en": "Sacred art LED lamp",
+          "detalle_en": "25 cm; Virgin of Guadalupe and saints, a best seller"
+        },
+        {
+          "id": "m-escultura-clasica",
+          "nombre": "Escultura clásica (réplica)",
+          "detalle": "~15 cm; Pietà, Niké; decoración de estantería",
+          "g": 150,
+          "h": 10,
+          "insumos": {},
+          "ref": {
+            "pub": [
+              600,
+              600
+            ],
+            "rev": [
+              330,
+              370
+            ]
+          },
+          "fuente": "3dreamstudio.com.mx",
+          "nombre_en": "Classical sculpture (replica)",
+          "detalle_en": "~15 cm; Pietà, Nike; shelf decor"
+        }
+      ],
+      "nombre_en": "Home and decor",
+      "nota_en": "Macetopia, Etsy México, PFB3D and 3Dream Studio, checked on 2026-11-27."
     }
-   ]
-  },
-  {
-   "nombre": "Regalos y temporada navideña",
-   "nota": "Etsy México (precios en MXN, vendedores de varios países) y 3Dream Studio, consultados 2026-11-27.",
-   "productos": [
-    {
-     "id": "m-set-adornos-navidenos",
-     "nombre": "Set de adornos navideños",
-     "detalle": "Juego de 3 a 25 piezas; temporada de diciembre",
-     "g": 60,
-     "h": 4,
-     "insumos": {},
-     "ref": {
-      "pub": [
-       232,
-       565
-      ],
-      "rev": [
-       130,
-       350
-      ]
-     },
-     "fuente": "etsy.com/mx"
-    },
-    {
-     "id": "m-lampara-litofania",
-     "nombre": "Lámpara litofanía con foto",
-     "detalle": "~10–15 cm; regalo personalizado con foto",
-     "g": 60,
-     "h": 4,
-     "insumos": {},
-     "ref": {
-      "pub": [
-       216,
-       611
-      ],
-      "rev": [
-       120,
-       380
-      ]
-     },
-     "fuente": "etsy.com/mx"
-    },
-    {
-     "id": "m-llavero-pareja",
-     "nombre": "Llaveros de pareja",
-     "detalle": "2 piezas ~5 cm; regalo para novios y amigos",
-     "g": 15,
-     "h": 1.2,
-     "insumos": {
-      "aro": 2
-     },
-     "ref": {
-      "pub": [
-       99,
-       300
-      ],
-      "rev": [
-       55,
-       185
-      ]
-     },
-     "fuente": "3dreamstudio.com.mx, sundarashop.com.mx"
-    },
-    {
-     "id": "m-mascota-personalizada",
-     "nombre": "Figura de mascota personalizada",
-     "detalle": "~10 cm con base; regalo emotivo bajo pedido",
-     "g": 120,
-     "h": 8,
-     "insumos": {},
-     "ref": {
-      "pub": [
-       750,
-       900
-      ],
-      "rev": [
-       415,
-       560
-      ]
-     },
-     "fuente": "3dreamstudio.com.mx"
-    }
-   ]
-  },
-  {
-   "nombre": "Figuras y juguetes articulados",
-   "nota": "Etsy México, 3Dream Studio, Sundara y El Arte 3D, consultados 2026-11-27.",
-   "productos": [
-    {
-     "id": "m-dragon-articulado",
-     "nombre": "Dragón articulado",
-     "detalle": "~30 cm; juguete flexible viral, muy reseñado",
-     "g": 60,
-     "h": 4,
-     "insumos": {},
-     "ref": {
-      "pub": [
-       278,
-       454
-      ],
-      "rev": [
-       155,
-       280
-      ]
-     },
-     "fuente": "etsy.com/mx"
-    },
-    {
-     "id": "m-huevo-dragon",
-     "nombre": "Huevo de dragón antiestrés",
-     "detalle": "~8 cm; fidget de escritorio con miles de reseñas",
-     "g": 40,
-     "h": 3,
-     "insumos": {},
-     "ref": {
-      "pub": [
-       245,
-       378
-      ],
-      "rev": [
-       135,
-       235
-      ]
-     },
-     "fuente": "etsy.com/mx"
-    },
-    {
-     "id": "m-figura-pokemon",
-     "nombre": "Figura Pokémon",
-     "detalle": "~8–12 cm; Pikachu, Bulbasaur, Charizard articulado",
-     "g": 80,
-     "h": 6,
-     "insumos": {},
-     "ref": {
-      "pub": [
-       200,
-       550
-      ],
-      "rev": [
-       110,
-       340
-      ]
-     },
-     "fuente": "3dreamstudio.com.mx"
-    },
-    {
-     "id": "m-figura-viral-brainrot",
-     "nombre": "Figura viral (Lirili Larila)",
-     "detalle": "~10 cm; personaje viral de redes sociales",
-     "g": 50,
-     "h": 4,
-     "insumos": {},
-     "ref": {
-      "pub": [
-       289,
-       319
-      ],
-      "rev": [
-       160,
-       200
-      ]
-     },
-     "fuente": "sundarashop.com.mx"
-    },
-    {
-     "id": "m-figura-kitty-tejida",
-     "nombre": "Figura Kitty textura tejida",
-     "detalle": "11 cm; personaje tierno con acabado de tejido",
-     "g": 45,
-     "h": 3.5,
-     "insumos": {},
-     "ref": {
-      "pub": [
-       139,
-       169
-      ],
-      "rev": [
-       75,
-       105
-      ]
-     },
-     "fuente": "elarte3d.com.mx"
-    }
-   ]
-  },
-  {
-   "nombre": "Gamer y escritorio",
-   "nota": "El Arte 3D, Etsy México y 3Dream Studio, consultados 2026-11-27.",
-   "productos": [
-    {
-     "id": "m-soporte-control-ps5",
-     "nombre": "Soporte para control PS5",
-     "detalle": "~8×6×6 cm; setup gamer, diseños GTA VI y personajes",
-     "g": 70,
-     "h": 4,
-     "insumos": {},
-     "ref": {
-      "pub": [
-       119,
-       340
-      ],
-      "rev": [
-       65,
-       210
-      ]
-     },
-     "fuente": "elarte3d.com.mx, etsy.com/mx"
-    },
-    {
-     "id": "m-soporte-doble-control-audifonos",
-     "nombre": "Soporte doble control y audífonos",
-     "detalle": "~20 cm; organiza setup gamer completo",
-     "g": 180,
-     "h": 9,
-     "insumos": {},
-     "ref": {
-      "pub": [
-       507,
-       676
-      ],
-      "rev": [
-       280,
-       420
-      ]
-     },
-     "fuente": "etsy.com/mx"
-    },
-    {
-     "id": "m-estuche-cartas-pokemon",
-     "nombre": "Estuche para mazo Pokémon TCG",
-     "detalle": "Caja para 60 cartas; auge del juego de cartas",
-     "g": 40,
-     "h": 2.5,
-     "insumos": {},
-     "ref": {
-      "pub": [
-       200,
-       200
-      ],
-      "rev": [
-       110,
-       125
-      ]
-     },
-     "fuente": "3dreamstudio.com.mx"
-    }
-   ]
-  },
-  {
-   "nombre": "Decoración y hogar",
-   "nota": "Macetopia, Etsy México, PFB3D y 3Dream Studio, consultados 2026-11-27.",
-   "productos": [
-    {
-     "id": "m-maceta-diseno",
-     "nombre": "Maceta de diseño para suculenta",
-     "detalle": "~8–10 cm; geométricas y texturas, decoración moderna",
-     "g": 90,
-     "h": 5,
-     "insumos": {},
-     "ref": {
-      "pub": [
-       150,
-       450
-      ],
-      "rev": [
-       80,
-       280
-      ]
-     },
-     "fuente": "macetopia.mx, etsy.com/mx"
-    },
-    {
-     "id": "m-maceta-papel-arrugado",
-     "nombre": "Maceta textura papel arrugado",
-     "detalle": "10–13 cm; diseño viral para suculentas",
-     "g": 110,
-     "h": 6,
-     "insumos": {},
-     "ref": {
-      "pub": [
-       284,
-       446
-      ],
-      "rev": [
-       155,
-       275
-      ]
-     },
-     "fuente": "etsy.com/mx"
-    },
-    {
-     "id": "m-lampara-arte-sacro",
-     "nombre": "Lámpara LED arte sacro",
-     "detalle": "25 cm; Virgen de Guadalupe y santos, muy vendida",
-     "g": 200,
-     "h": 10,
-     "insumos": {},
-     "ref": {
-      "pub": [
-       650,
-       699
-      ],
-      "rev": [
-       360,
-       435
-      ]
-     },
-     "fuente": "pfb3d.com"
-    },
-    {
-     "id": "m-escultura-clasica",
-     "nombre": "Escultura clásica (réplica)",
-     "detalle": "~15 cm; Pietà, Niké; decoración de estantería",
-     "g": 150,
-     "h": 10,
-     "insumos": {},
-     "ref": {
-      "pub": [
-       600,
-       600
-      ],
-      "rev": [
-       330,
-       370
-      ]
-     },
-     "fuente": "3dreamstudio.com.mx"
-    }
-   ]
-  }
- ],
- "actualizado": "2026-11-27"
+  ],
+  "actualizado": "2026-11-27"
 }

@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.28",
+  "version": "2026.11.29",
   "categorias": [
     "Adhesión",
     "Extrusión",
@@ -92,7 +92,54 @@
         "no agarra",
         "arrastra el filamento",
         "boquilla arrastra"
-      ]
+      ],
+      "en": {
+        "nombre": "First layer won't stick",
+        "sintomas": [
+          "The filament gets dragged by the nozzle",
+          "Lines stay round and loose",
+          "The part comes loose after a few minutes"
+        ],
+        "causas": [
+          "Dirty bed (finger grease)",
+          "Nozzle too high (Z-offset)",
+          "Bed temperature too low",
+          "First layer too fast",
+          "Wrong bed surface for the material"
+        ],
+        "pasos": [
+          "Wash the plate with warm water and dish soap, dry it and don't touch it with your fingers. Isopropyl alcohol helps between prints, but soap is what really removes grease.",
+          "Run the automatic calibration from the screen (bed leveling) before printing.",
+          "Check that the plate sits flat on the magnets with no debris underneath; a bent plate fails even after calibrating.",
+          "Level by hand with a sheet of paper at the 4 corners and the center, with the bed hot. Do two rounds.",
+          "Adjust the Z-offset in 0.02 mm steps while printing a test first layer until the lines are flat and joined.",
+          "Adjust Z-offset live (Tune > Z offset) or with PROBE_CALIBRATE and save with SAVE_CONFIG.",
+          "Use the First Layer Calibration from the wizard.",
+          "Raise the bed 5 °C and lower the first layer speed to 30–40 mm/s.",
+          "PETG on a smooth PEI plate sticks too much: use glue stick as a release layer. PLA on a textured plate needs nothing."
+        ],
+        "ajustes": [
+          "initial_layer_speed: 30–40 mm/s",
+          "initial_layer_print_height: 0.2–0.25 mm",
+          "brim_type: outer_only if the part is small"
+        ],
+        "claves": [
+          "wont stick",
+          "won't stick",
+          "not sticking",
+          "doesnt stick",
+          "doesn't stick",
+          "first layer wont stick",
+          "bed adhesion",
+          "comes off the bed",
+          "came off the bed",
+          "detaches from the bed",
+          "poor adhesion",
+          "not adhering",
+          "nozzle drags the filament",
+          "loose from the bed"
+        ]
+      }
     },
     {
       "id": "warping",
@@ -162,7 +209,50 @@
         "despegan las orillas",
         "se despegan las orillas",
         "orillas de la pieza se"
-      ]
+      ],
+      "en": {
+        "nombre": "Lifted corners (warping)",
+        "sintomas": [
+          "Corners curl upward",
+          "The base ends up shaped like a dish",
+          "Cracks at the bottom of large parts"
+        ],
+        "causas": [
+          "Material that shrinks as it cools (ABS, ASA, Nylon, large PETG)",
+          "Drafts",
+          "Part cooling fan too strong",
+          "Small contact area"
+        ],
+        "pasos": [
+          "Add a 5–8 mm brim or 'brim ears' at the corners.",
+          "For ABS/ASA use an enclosed printer or put a box/tent over it; preheat the bed for 10 minutes with the door closed.",
+          "Close the door and lid and let the chamber warm up before starting; turn off the auxiliary fan.",
+          "Lower the part cooling fan to 0–20 % for ABS/ASA and 30–50 % for PETG.",
+          "Round off sharp corners in the design or add 0.4 mm tall 'mouse ears'.",
+          "Raise the bed temperature 5–10 °C and keep the printer away from windows and air conditioning."
+        ],
+        "ajustes": [
+          "brim_type: outer_only, brim_width: 6",
+          "Part cooling fan: lower",
+          "Bed: +5–10 °C"
+        ],
+        "claves": [
+          "warping",
+          "warp",
+          "warped",
+          "corners lift",
+          "corners lifting",
+          "corners curl",
+          "corners peel",
+          "edges lift",
+          "edges lifting",
+          "edges curl",
+          "base is curved",
+          "lifting corners",
+          "corners come up",
+          "bottom curls"
+        ]
+      }
     },
     {
       "id": "hilos",
@@ -231,7 +321,49 @@
         "cabellos",
         "pelitos",
         "pelusa"
-      ]
+      ],
+      "en": {
+        "nombre": "Strings and cobwebs (stringing)",
+        "sintomas": [
+          "Thin strings between separate parts",
+          "Cobweb-like fuzz",
+          "Little blobs on travel moves"
+        ],
+        "causas": [
+          "Wet filament",
+          "Temperature too high",
+          "Not enough retraction",
+          "Slow travel moves"
+        ],
+        "pasos": [
+          "Dry the filament: PLA 50 °C 6 h, PETG 65 °C 6 h, TPU 55 °C 8 h. It's the number one cause with PETG and TPU.",
+          "Lower the nozzle temperature 5 °C at a time using a temperature tower.",
+          "Retraction on a direct drive extruder: 0.5–1.5 mm. Increase 0.2 mm at a time.",
+          "Retraction on Bowden: 4–6 mm at 35–45 mm/s. Check that the PTFE tube has no play in the couplers.",
+          "Calibrate Pressure Advance (Orca: Calibration > Pressure advance) and save it in the filament profile.",
+          "Run the dynamic flow calibration (Flow Dynamics) for that filament.",
+          "Enable 'Avoid crossing walls' and raise the travel speed."
+        ],
+        "ajustes": [
+          "reduce_crossing_wall: enabled",
+          "Temperature: −5 °C",
+          "Retraction: see steps"
+        ],
+        "claves": [
+          "stringing",
+          "strings",
+          "stringy",
+          "string",
+          "hairs",
+          "hairy",
+          "cobwebs",
+          "cobweb",
+          "spider web",
+          "wisps",
+          "oozing",
+          "fine threads"
+        ]
+      }
     },
     {
       "id": "subextrusion",
@@ -303,7 +435,53 @@
         "poco material",
         "sale poco",
         "sale muy poco"
-      ]
+      ],
+      "en": {
+        "nombre": "Under-extrusion (gaps, thin walls)",
+        "sintomas": [
+          "Gaps between lines",
+          "Walls you can see through",
+          "Spongy, weak infill",
+          "Layers that separate easily"
+        ],
+        "causas": [
+          "Speed higher than the hotend's maximum flow",
+          "Partially clogged nozzle",
+          "Dirty extruder gears or low tension",
+          "Tangled filament or a stiff spool",
+          "Temperature too low for the speed"
+        ],
+        "pasos": [
+          "Lower the speed or limit the maximum volumetric flow in the filament profile (generic PLA ~15 mm³/s).",
+          "Raise 5–10 °C if you print very fast.",
+          "Do a cold pull to clean the nozzle.",
+          "Check that the spool turns freely and the filament isn't tangled.",
+          "Check the PTFE tube: it must sit tight against the nozzle with no gap; a gap causes jams.",
+          "Calibrate the flow rate (Orca: Calibration > Flow rate) per filament.",
+          "Clean the extruder gears with a toothbrush; teeth full of dust slip."
+        ],
+        "ajustes": [
+          "filament_max_volumetric_speed: lower",
+          "Flow ratio: calibrate",
+          "Temperature: +5 °C"
+        ],
+        "claves": [
+          "under extrusion",
+          "underextrusion",
+          "under-extrusion",
+          "gaps in walls",
+          "gaps between lines",
+          "thin walls",
+          "see through walls",
+          "not enough plastic",
+          "not enough material",
+          "spongy infill",
+          "weak infill",
+          "porous",
+          "holes in walls",
+          "missing lines"
+        ]
+      }
     },
     {
       "id": "sobreextrusion",
@@ -351,7 +529,42 @@
         "sale mucho plastico",
         "sale demasiado plastico",
         "demasiado material"
-      ]
+      ],
+      "en": {
+        "nombre": "Over-extrusion (blobs, oversized parts)",
+        "sintomas": [
+          "Thick, rough walls",
+          "The nozzle scrapes the top surface",
+          "Holes smaller than designed"
+        ],
+        "causas": [
+          "Flow ratio too high",
+          "Filament diameter set wrong",
+          "First layer squished too much"
+        ],
+        "pasos": [
+          "Calibrate the flow with the slicer's wizard and lower it in 2 % steps.",
+          "Confirm the filament is set to 1.75 mm and measure it with calipers at 3 points.",
+          "If it only happens on the first layer, raise the Z-offset 0.02–0.04 mm."
+        ],
+        "ajustes": [
+          "filament_flow_ratio: −2 %",
+          "elefant_foot_compensation: 0.1–0.15 mm"
+        ],
+        "claves": [
+          "over extrusion",
+          "overextrusion",
+          "over-extrusion",
+          "too much plastic",
+          "too much material",
+          "blobby walls",
+          "thick walls",
+          "rough walls",
+          "nozzle scrapes the top",
+          "bulging",
+          "lumps"
+        ]
+      }
     },
     {
       "id": "tapada",
@@ -416,7 +629,49 @@
         "tapo la boquilla",
         "se atoro la boquilla",
         "no extrude"
-      ]
+      ],
+      "en": {
+        "nombre": "No filament comes out / clogged nozzle",
+        "sintomas": [
+          "The printer moves but doesn't extrude",
+          "The extruder clicks",
+          "Only a tiny thread comes out"
+        ],
+        "causas": [
+          "Debris or carbon inside the nozzle",
+          "Heat creep (the filament softens higher up)",
+          "Material change without purging",
+          "Wet or poor-quality filament"
+        ],
+        "pasos": [
+          "Heat to 250 °C and push filament by hand; then do 2–3 cold pulls at 90 °C for PLA.",
+          "With PLA in an enclosed printer open the door and remove the top lid: chamber heat causes heat creep.",
+          "Check that the heatsink fan (the one that always spins) works.",
+          "Use the cleaning needle from below with the nozzle hot. If it persists, replace the nozzle: it's a consumable.",
+          "On the A1/P1/X1 the whole hotend swaps in a few minutes; having a spare saves days.",
+          "When going from PETG/ABS to PLA, purge at the higher temperature before lowering it."
+        ],
+        "ajustes": [
+          "Nothing in the slicer: it's maintenance"
+        ],
+        "claves": [
+          "clogged",
+          "clog",
+          "clogged nozzle",
+          "nozzle is clogged",
+          "not extruding",
+          "no filament comes out",
+          "nothing comes out",
+          "no plastic",
+          "extruder clicking",
+          "extruder clicks",
+          "clicking",
+          "jammed",
+          "jam",
+          "blocked nozzle",
+          "heat creep"
+        ]
+      }
     },
     {
       "id": "desplazamiento",
@@ -483,7 +738,45 @@
         "se fue de lado",
         "de lado a media",
         "se chueco de golpe"
-      ]
+      ],
+      "en": {
+        "nombre": "Shifted layers (layer shift)",
+        "sintomas": [
+          "The part suddenly 'steps' in X or Y",
+          "Half the part moved several millimeters"
+        ],
+        "causas": [
+          "Loose belts or loose pulleys",
+          "The nozzle hit the part (warping or curl)",
+          "Acceleration too high for the machine",
+          "Overheated motors"
+        ],
+        "pasos": [
+          "Tighten the belts: they should sound like a low guitar string, not floppy. Tighten the pulley set screws.",
+          "Enable Z-hop on travels if the part curls up on overhangs.",
+          "Lower accelerations 30 % and try again.",
+          "On a bed slinger, check the eccentric wheels: the bed shouldn't wobble or feel stiff.",
+          "On CoreXY, check that both belts have the same tension (frequency app or the brand's app).",
+          "Lubricate the rails/rods and check no cables are rubbing."
+        ],
+        "ajustes": [
+          "default_acceleration: −30 %",
+          "z_hop: 0.4 mm"
+        ],
+        "claves": [
+          "layer shift",
+          "layer shifted",
+          "layers shifted",
+          "shifted layers",
+          "shifted",
+          "offset layers",
+          "layers moved",
+          "moved sideways",
+          "stepped",
+          "staircase shift",
+          "misaligned layers"
+        ]
+      }
     },
     {
       "id": "pata-elefante",
@@ -528,7 +821,39 @@
         "abajo mas ancha",
         "primera capa quedo muy ancha",
         "primera capa muy ancha"
-      ]
+      ],
+      "en": {
+        "nombre": "Elephant's foot (flared base)",
+        "sintomas": [
+          "The first layers stick out like a lip",
+          "Parts don't fit together at the bottom"
+        ],
+        "causas": [
+          "First layer squished too much",
+          "Bed too hot",
+          "Part weight on soft layers"
+        ],
+        "pasos": [
+          "Raise the Z-offset 0.02 mm.",
+          "Lower the bed 5 °C after the first layer.",
+          "Use elephant's foot compensation in the slicer or a 0.5 mm chamfer in the design."
+        ],
+        "ajustes": [
+          "elefant_foot_compensation: 0.15 mm"
+        ],
+        "claves": [
+          "elephant foot",
+          "elephants foot",
+          "elephant's foot",
+          "flared base",
+          "base wider",
+          "base is wider",
+          "bottom is wider",
+          "first layers stick out",
+          "lip at the bottom",
+          "squished base"
+        ]
+      }
     },
     {
       "id": "ghosting",
@@ -593,7 +918,46 @@
         "ghosting",
         "fantasma",
         "ondulacion"
-      ]
+      ],
+      "en": {
+        "nombre": "Ripples or echoes on walls (ringing)",
+        "sintomas": [
+          "Repeated waves after corners or letters",
+          "Echoes of details across the wall"
+        ],
+        "causas": [
+          "High acceleration without resonance compensation",
+          "Loose belts",
+          "Printer on a table that moves",
+          "Heavy bed on bed-slinger machines"
+        ],
+        "pasos": [
+          "Run the vibration calibration (Vibration compensation) from the screen.",
+          "Measure resonances: on stock Creality (K1, K1C, KE, K2) run the automatic calibration from the screen, which includes input shaping; on Klipper with console access use SHAPER_CALIBRATE with an accelerometer and save with SAVE_CONFIG.",
+          "Lower the outer wall acceleration to 1500–3000 mm/s² and the outer wall speed.",
+          "Put the printer on a solid, heavy surface; a wobbly table ruins the finish.",
+          "On tall parts, lower the acceleration: the bed carries more weight and the part sways.",
+          "On the Prusa MK4S, CORE One and XL input shaping is already on: update the firmware and don't raise the outer wall acceleration above what the profile uses.",
+          "Lower the outer wall speed to 80–150 mm/s and make sure the printer sits on a firm table that doesn't move."
+        ],
+        "ajustes": [
+          "outer_wall_acceleration: lower",
+          "outer_wall_speed: lower"
+        ],
+        "claves": [
+          "ringing",
+          "ghosting",
+          "ripples",
+          "ripple",
+          "waves on the walls",
+          "wavy walls",
+          "echoes",
+          "echo",
+          "ghost",
+          "vibration marks",
+          "waves after corners"
+        ]
+      }
     },
     {
       "id": "espagueti",
@@ -641,7 +1005,41 @@
         "se hizo espagueti",
         "nido de pajaro",
         "se desprendio a la mitad"
-      ]
+      ],
+      "en": {
+        "nombre": "Spaghetti (the print comes off halfway)",
+        "sintomas": [
+          "A ball of filament on the bed",
+          "The part fell over or moved"
+        ],
+        "causas": [
+          "Poor adhesion",
+          "Tall, thin parts that sway",
+          "Supports that fell",
+          "The nozzle hit a curled section"
+        ],
+        "pasos": [
+          "Fix adhesion first (see 'First layer won't stick').",
+          "For tall, thin parts use a 5–8 mm brim and lower the acceleration.",
+          "Turn on the camera's spaghetti detection.",
+          "Reorient the part: biggest flat face down."
+        ],
+        "ajustes": [
+          "brim_width: 6 mm",
+          "Acceleration: −30 % on tall parts"
+        ],
+        "claves": [
+          "spaghetti",
+          "spaghetti mess",
+          "birds nest",
+          "bird's nest",
+          "ball of filament",
+          "printed in the air",
+          "came loose mid print",
+          "knocked off",
+          "fell over mid print"
+        ]
+      }
     },
     {
       "id": "voladizos",
@@ -688,7 +1086,44 @@
         "abajo en angulo",
         "parte de abajo sale fea",
         "sale rizada"
-      ]
+      ],
+      "en": {
+        "nombre": "Drooping overhangs and bridges",
+        "sintomas": [
+          "Curly bottom edges",
+          "Sagging bridges",
+          "Ugly underside on angles"
+        ],
+        "causas": [
+          "Angle above 45–50° without support",
+          "Not enough cooling",
+          "High speed on bridges",
+          "High temperature"
+        ],
+        "pasos": [
+          "Turn on tree supports only where needed.",
+          "Rotate the part to reduce overhangs; sometimes 45° fixes everything.",
+          "Fan at 100 % for PLA on bridges and bridge speed 25–50 mm/s.",
+          "Lower the temperature 5 °C."
+        ],
+        "ajustes": [
+          "enable_support: 1, support_type: tree(auto)",
+          "bridge_speed: 30–50 mm/s",
+          "overhang_fan_speed: 100 %"
+        ],
+        "claves": [
+          "overhang",
+          "overhangs",
+          "drooping",
+          "sagging",
+          "bridges sag",
+          "bridge sagging",
+          "bridging",
+          "droopy",
+          "ugly underside",
+          "bad overhangs"
+        ]
+      }
     },
     {
       "id": "delaminacion",
@@ -738,7 +1173,45 @@
         "se separa entre",
         "se separan entre capas",
         "entre capa y capa"
-      ]
+      ],
+      "en": {
+        "nombre": "Layers splitting apart (delamination)",
+        "sintomas": [
+          "Horizontal cracks",
+          "The part breaks easily between layers"
+        ],
+        "causas": [
+          "Temperature too low",
+          "Too much fan (ABS/ASA)",
+          "Under-extrusion",
+          "Layer too tall for the nozzle"
+        ],
+        "pasos": [
+          "Raise the nozzle 5–10 °C.",
+          "Lower the fan for ABS/ASA/PETG.",
+          "Layer height shouldn't exceed 70 % of the nozzle diameter (0.28 mm on a 0.4).",
+          "For strength use more walls (4–5) instead of more infill."
+        ],
+        "ajustes": [
+          "wall_loops: 4–5",
+          "Temperature: +5–10 °C",
+          "Fan: lower"
+        ],
+        "claves": [
+          "delamination",
+          "delaminating",
+          "layers split",
+          "layers splitting",
+          "layers separate",
+          "layers separating",
+          "layer separation",
+          "cracks between layers",
+          "horizontal cracks",
+          "splits between layers",
+          "breaks between layers",
+          "poor layer adhesion"
+        ]
+      }
     },
     {
       "id": "pieza-debil",
@@ -830,7 +1303,59 @@
         "no se rompa",
         "se rompe tan facil",
         "dure mas"
-      ]
+      ],
+      "en": {
+        "nombre": "The part looks good but breaks with little force",
+        "sintomas": [
+          "Looks nice but snaps when you squeeze or use it",
+          "Breaks from a knock or when screwing it in",
+          "Cracks along the layers or at thin sections"
+        ],
+        "causas": [
+          "Few walls and low infill: the walls carry the load",
+          "The force runs along the layers (orientation)",
+          "Low temperature or high fan: the layers don't fuse well",
+          "Wet or old filament (PLA becomes brittle)",
+          "Material too stiff for the job (PLA is brittle under impact)"
+        ],
+        "pasos": [
+          "Rotate the part in the slicer so the force doesn't pull the layers apart: whatever carries weight should lie flat, not stand up.",
+          "Go up to 4–6 walls and 25–40 % gyroid or cubic infill; walls add more strength than infill.",
+          "Raise the nozzle 5–10 °C and lower the fan (PLA 60–80 %, PETG 30–50 %) so the layers bond better.",
+          "Dry the filament (PLA 50 °C, PETG 65 °C for 6–8 h); if it snaps when you bend it, it's wet or old.",
+          "If it's a functional part (brackets, hooks, clips), print it in PETG or PLA+ instead of regular PLA.",
+          "Use 0.20 mm layers or less and round off sharp inside corners in the design: that's where fractures start."
+        ],
+        "ajustes": [
+          "wall_loops: 4–6",
+          "sparse_infill_density: 25–40 % (gyroid)",
+          "Temperature: +5–10 °C",
+          "Fan: lower",
+          "Orientation: load perpendicular to the layers"
+        ],
+        "claves": [
+          "breaks easily",
+          "broke easily",
+          "snaps easily",
+          "snapped",
+          "weak part",
+          "part is weak",
+          "fragile part",
+          "brittle part",
+          "not strong",
+          "not strong enough",
+          "make it stronger",
+          "stronger part",
+          "breaks with little force",
+          "little force",
+          "looks good but breaks",
+          "cracked when",
+          "broke when",
+          "breaks when",
+          "strength",
+          "durable"
+        ]
+      }
     },
     {
       "id": "pillowing",
@@ -880,7 +1405,44 @@
         "arriba se ve el relleno",
         "arriba se ve",
         "tapa no cierra"
-      ]
+      ],
+      "en": {
+        "nombre": "Holes or bubbles on the top surface",
+        "sintomas": [
+          "The top skin has holes",
+          "You can see the infill underneath",
+          "Bubbly surface"
+        ],
+        "causas": [
+          "Too few top layers",
+          "Infill too low",
+          "Not enough cooling"
+        ],
+        "pasos": [
+          "Use at least 1 mm of top layers (5 layers at 0.2 mm).",
+          "Raise infill to 15 % or use internal support infill.",
+          "Turn on ironing on the last layer if you want a smooth top surface."
+        ],
+        "ajustes": [
+          "top_shell_layers: 5+",
+          "ironing_type: top"
+        ],
+        "claves": [
+          "pillowing",
+          "holes on top",
+          "holes in the top",
+          "top surface holes",
+          "top has holes",
+          "gaps on top",
+          "bubbles on top",
+          "top layer not closed",
+          "top not closing",
+          "infill showing on top",
+          "holes on the top surface",
+          "top surface has holes",
+          "holes in the top surface"
+        ]
+      }
     },
     {
       "id": "costura",
@@ -917,7 +1479,39 @@
         "zits",
         "puntitos",
         "linea vertical"
-      ]
+      ],
+      "en": {
+        "nombre": "Zits or a very visible seam",
+        "sintomas": [
+          "A vertical line of dots",
+          "Random bumps on the wall"
+        ],
+        "causas": [
+          "Random seam position",
+          "Pressure advance not calibrated",
+          "Retraction poorly tuned"
+        ],
+        "pasos": [
+          "Set the seam to 'back' or 'aligned' and orient the part to hide it.",
+          "Calibrate pressure advance / dynamic flow.",
+          "Turn on 'scarf seam' in Orca for almost invisible seams."
+        ],
+        "ajustes": [
+          "seam_position: back",
+          "seam_slope_type: external (scarf)"
+        ],
+        "claves": [
+          "seam",
+          "visible seam",
+          "z seam",
+          "zits",
+          "blobs on the wall",
+          "bumps on the wall",
+          "line of dots",
+          "pimples",
+          "seam is visible"
+        ]
+      }
     },
     {
       "id": "z-banding",
@@ -956,7 +1550,38 @@
         "lineas horizontales",
         "rayas horizontales",
         "wobble"
-      ]
+      ],
+      "en": {
+        "nombre": "Repeating horizontal lines (Z-banding)",
+        "sintomas": [
+          "Regular bands up the height",
+          "A pattern that repeats every few mm"
+        ],
+        "causas": [
+          "Bent or dirty Z lead screw",
+          "Loose coupler",
+          "Oscillating bed temperature",
+          "Layer height not matching motor steps"
+        ],
+        "pasos": [
+          "Clean and lubricate the Z screws; check that they're straight.",
+          "Use layer heights that are multiples of 0.04 mm (0.12, 0.16, 0.2, 0.24, 0.28).",
+          "On machines with two Z motors, check that they're in sync."
+        ],
+        "ajustes": [
+          "layer_height: multiple of 0.04"
+        ],
+        "claves": [
+          "z banding",
+          "z-banding",
+          "banding",
+          "horizontal lines",
+          "horizontal bands",
+          "repeating lines",
+          "ribbing",
+          "z wobble"
+        ]
+      }
     },
     {
       "id": "soportes-pegados",
@@ -1002,7 +1627,40 @@
         "soporte no sale",
         "rompe la pieza al quitar",
         "no se desprende el soporte"
-      ]
+      ],
+      "en": {
+        "nombre": "Supports impossible to remove",
+        "sintomas": [
+          "The support breaks along with the part",
+          "Ugly underside after removal"
+        ],
+        "causas": [
+          "Support Z distance too small",
+          "Interface too dense",
+          "Support material same as the part"
+        ],
+        "pasos": [
+          "Top Z distance: 0.2 mm (equal to one layer).",
+          "Use tree supports with a crossed-lines interface pattern.",
+          "With the AMS use PETG as the interface for PLA (they don't bond)."
+        ],
+        "ajustes": [
+          "support_top_z_distance: 0.2",
+          "support_interface_spacing: 0.5"
+        ],
+        "claves": [
+          "supports wont come off",
+          "supports won't come off",
+          "cant remove supports",
+          "can't remove supports",
+          "supports stuck",
+          "supports fused",
+          "hard to remove supports",
+          "support removal",
+          "supports too strong",
+          "support scars"
+        ]
+      }
     },
     {
       "id": "medidas",
@@ -1062,7 +1720,45 @@
         "no coincide con el diseno",
         "no coinciden con el diseno",
         "mide diferente"
-      ]
+      ],
+      "en": {
+        "nombre": "Wrong dimensions / small holes",
+        "sintomas": [
+          "Screws don't go in",
+          "Parts don't fit together"
+        ],
+        "causas": [
+          "Over-extrusion",
+          "Material shrinkage",
+          "No hole compensation"
+        ],
+        "pasos": [
+          "Calibrate flow first.",
+          "Use XY hole compensation (+0.1 to +0.2 mm).",
+          "Design with 0.2 mm clearance per side for assemblies."
+        ],
+        "ajustes": [
+          "xy_hole_compensation: 0.1",
+          "xy_contour_compensation: 0"
+        ],
+        "claves": [
+          "wrong dimensions",
+          "dimensions are off",
+          "not accurate",
+          "holes too small",
+          "holes are small",
+          "screw doesnt fit",
+          "screw doesn't fit",
+          "parts dont fit",
+          "parts don't fit",
+          "doesnt fit",
+          "doesn't fit",
+          "tolerance",
+          "too tight",
+          "oversized",
+          "undersized"
+        ]
+      }
     },
     {
       "id": "humedo",
@@ -1102,7 +1798,42 @@
         "truena",
         "crujid",
         "palomitas"
-      ]
+      ],
+      "en": {
+        "nombre": "Wet filament (popping, rough surface)",
+        "sintomas": [
+          "Popping or bubbling sounds",
+          "Steam coming from the nozzle",
+          "Dull, rough surface",
+          "Lots of stringing"
+        ],
+        "causas": [
+          "Filament exposed to ambient humidity"
+        ],
+        "pasos": [
+          "Dry the filament in a dryer or an oven at low temperature (PLA 50 °C, PETG 65 °C, TPU 55 °C, Nylon 80 °C) for 6–8 h.",
+          "Store it in an airtight box with silica gel; print from a dry box if you live in a humid climate.",
+          "If you don't have a dryer, print straight from a dry box or put the spool on the hot bed at 60 °C for a few hours, covered with a box.",
+          "Confirm it was moisture: print a stretch with the dried filament; if the popping and strings go away, that was it."
+        ],
+        "ajustes": [
+          "Nothing in the slicer: it needs drying"
+        ],
+        "claves": [
+          "wet filament",
+          "moist filament",
+          "humid",
+          "moisture",
+          "popping",
+          "pops",
+          "crackling",
+          "sizzling",
+          "bubbling",
+          "steam",
+          "steam from the nozzle",
+          "filament is wet"
+        ]
+      }
     },
     {
       "id": "primera-rugosa",
@@ -1155,7 +1886,42 @@
         "primera capa con surcos",
         "primera capa quedo rugosa",
         "primera capa quedo fea"
-      ]
+      ],
+      "en": {
+        "nombre": "Rough or grooved first layer",
+        "sintomas": [
+          "Transparent, squished lines",
+          "The nozzle scrapes",
+          "Gaps between lines in parts of the bed"
+        ],
+        "causas": [
+          "Nozzle too low or too high",
+          "Unlevel bed",
+          "Plate with worn areas"
+        ],
+        "pasos": [
+          "Lines with gaps: lower the nozzle. Squished lines with ridges: raise it. Steps of 0.02 mm.",
+          "Recalibrate the bed mesh with the plate hot.",
+          "Check the leveling with paper at the corners.",
+          "If it only happens in one area, the plate may be warped or worn."
+        ],
+        "ajustes": [
+          "initial_layer_line_width: 0.5",
+          "initial_layer_speed: 30"
+        ],
+        "claves": [
+          "rough first layer",
+          "first layer is rough",
+          "grooves in the first layer",
+          "first layer grooves",
+          "first layer looks bad",
+          "bad first layer",
+          "ugly first layer",
+          "first layer transparent",
+          "first layer too squished",
+          "nozzle scraping the first layer"
+        ]
+      }
     },
     {
       "id": "tpu",
@@ -1198,7 +1964,40 @@
         "tpu",
         "flexible",
         "se enreda en el extrusor"
-      ]
+      ],
+      "en": {
+        "nombre": "TPU jams or tangles in the extruder",
+        "sintomas": [
+          "The flexible filament buckles inside",
+          "Extrusion stops"
+        ],
+        "causas": [
+          "High speed",
+          "Bowden extruder",
+          "Long retraction"
+        ],
+        "pasos": [
+          "Maximum speed ~3.5 mm³/s (25–30 mm/s).",
+          "On Bowden use a harder TPU (98A) or avoid flexibles.",
+          "Minimal or no retraction; dry the TPU.",
+          "Don't run TPU through the AMS: feed it from the external spool holder."
+        ],
+        "ajustes": [
+          "filament_max_volumetric_speed: 3.5",
+          "retraction_length: 0–0.5"
+        ],
+        "claves": [
+          "tpu",
+          "flexible filament",
+          "flex filament",
+          "tpu jams",
+          "tpu tangles",
+          "tpu buckles",
+          "flexible jams",
+          "tpu wont feed",
+          "tpu won't feed"
+        ]
+      }
     },
     {
       "id": "relleno-visible",
@@ -1239,7 +2038,41 @@
         "wall_loops: 3+",
         "is_infill_first: no",
         "infill_wall_overlap: 15%"
-      ]
+      ],
+      "en": {
+        "nombre": "Infill shows through the walls",
+        "sintomas": [
+          "The infill pattern shows on the walls",
+          "Diagonal or grid marks on the outside"
+        ],
+        "causas": [
+          "Too few walls",
+          "Infill printed before walls",
+          "High infill/wall overlap",
+          "Infill speed too high"
+        ],
+        "pasos": [
+          "Go up to at least 3 walls.",
+          "Print walls before infill (order: inner/outer wall → infill).",
+          "Lower the infill/wall overlap to 15 %.",
+          "Lower the infill speed 20 %; fast infill pushes the wall out."
+        ],
+        "ajustes": [
+          "wall_loops: 3+",
+          "is_infill_first: no",
+          "infill_wall_overlap: 15%"
+        ],
+        "claves": [
+          "infill shows through",
+          "infill visible",
+          "infill showing through the walls",
+          "see the infill",
+          "infill pattern on the walls",
+          "infill marks",
+          "diagonal marks on walls",
+          "grid pattern on walls"
+        ]
+      }
     },
     {
       "id": "cicatrices",
@@ -1280,7 +2113,40 @@
         "z_hop: 0.4",
         "z_hop_types: Auto Lift",
         "retract_lift_enforce: Top Only"
-      ]
+      ],
+      "en": {
+        "nombre": "Scratches on the top surface",
+        "sintomas": [
+          "Drag lines across the top",
+          "Marks from the nozzle's travel moves"
+        ],
+        "causas": [
+          "Over-extrusion on the top layer",
+          "No Z-hop",
+          "Part curling upward"
+        ],
+        "pasos": [
+          "Enable 0.4 mm Z-hop only on top surfaces.",
+          "Calibrate the flow; an over-full top lifts material.",
+          "Enable 'Avoid crossing walls' so travels don't pass over the top.",
+          "If the part curls, improve cooling."
+        ],
+        "ajustes": [
+          "z_hop: 0.4",
+          "z_hop_types: Auto Lift",
+          "retract_lift_enforce: Top Only"
+        ],
+        "claves": [
+          "scratches on top",
+          "scratched top",
+          "nozzle scratches",
+          "drag marks",
+          "nozzle drags on top",
+          "scars on the top",
+          "travel marks",
+          "lines on the top surface"
+        ]
+      }
     },
     {
       "id": "curling",
@@ -1338,7 +2204,44 @@
         "overhang_fan_speed: 100",
         "enable_overhang_speed: 1",
         "overhang_3_4_speed: 30"
-      ]
+      ],
+      "en": {
+        "nombre": "Curling overhang edges",
+        "sintomas": [
+          "Overhang edges lift up",
+          "The nozzle hits those edges"
+        ],
+        "causas": [
+          "Not enough cooling",
+          "High temperature",
+          "Unsupported overhangs",
+          "High speed on overhangs"
+        ],
+        "pasos": [
+          "Fan at 100 % on overhangs (PLA).",
+          "Lower the temperature 5–10 °C.",
+          "Enable 'slow down for overhangs' and drop to 20–30 mm/s on those over 75 %.",
+          "With PLA in an enclosed printer, open the door: warm air doesn't cool well.",
+          "Add supports if the angle goes past 50–55°."
+        ],
+        "ajustes": [
+          "overhang_fan_speed: 100",
+          "enable_overhang_speed: 1",
+          "overhang_3_4_speed: 30"
+        ],
+        "claves": [
+          "curling",
+          "overhang curling",
+          "overhangs curl",
+          "edges of the overhang curl",
+          "overhang edges lift",
+          "curling up overhangs",
+          "curled overhang",
+          "overhang edges curl",
+          "edges curl up on the overhang",
+          "overhang edges curl up"
+        ]
+      }
     },
     {
       "id": "esquinas",
@@ -1393,7 +2296,39 @@
       "ajustes": [
         "pressure_advance: calibrar",
         "outer_wall_acceleration: bajar"
-      ]
+      ],
+      "en": {
+        "nombre": "Bulging or rounded corners",
+        "sintomas": [
+          "Corners stick out",
+          "Corners don't come out sharp"
+        ],
+        "causas": [
+          "Pressure advance / linear advance not calibrated",
+          "High acceleration",
+          "High temperature"
+        ],
+        "pasos": [
+          "Calibrate Pressure Advance in Orca (Calibration → Pressure advance) and save it in the filament.",
+          "Run the dynamic flow calibration for that filament.",
+          "Enable and calibrate Linear Advance (M900 K) in your firmware.",
+          "Cut the outer wall acceleration in half.",
+          "Lower the temperature 5 °C."
+        ],
+        "ajustes": [
+          "pressure_advance: calibrate",
+          "outer_wall_acceleration: lower"
+        ],
+        "claves": [
+          "bulging corners",
+          "corner bulge",
+          "corners bulge",
+          "rounded corners",
+          "corners not sharp",
+          "blobby corners",
+          "fat corners"
+        ]
+      }
     },
     {
       "id": "se-detiene",
@@ -1453,7 +2388,47 @@
       ],
       "ajustes": [
         "Nada en el slicer"
-      ]
+      ],
+      "en": {
+        "nombre": "The print stops halfway",
+        "sintomas": [
+          "The printer pauses by itself",
+          "It sits still or shuts off mid-job"
+        ],
+        "causas": [
+          "Filament ran out or tangled",
+          "Power outage",
+          "Thermal error",
+          "Corrupt file or memory card",
+          "Dirty filament sensor"
+        ],
+        "pasos": [
+          "Check the spool: a tangle under other turns stops the extruder.",
+          "Read the error message on the screen and write it down before restarting.",
+          "Use a voltage regulator or UPS: a power flicker resets the board.",
+          "Resume with 'power loss recovery' if your printer has it.",
+          "If you print over Wi-Fi or the cloud and it drops, send the file to the memory or card.",
+          "Check the reason: on stock Creality it shows on the screen or in Creality Print; on Klipper with console access, in klippy.log.",
+          "Replace the SD card and export the G-code again."
+        ],
+        "ajustes": [
+          "Nothing in the slicer"
+        ],
+        "claves": [
+          "stops mid print",
+          "stopped mid print",
+          "print stopped",
+          "printer stopped",
+          "paused by itself",
+          "pauses by itself",
+          "stopped halfway",
+          "froze",
+          "freezes",
+          "shut off",
+          "turned off mid print",
+          "power outage"
+        ]
+      }
     },
     {
       "id": "termico",
@@ -1515,7 +2490,43 @@
       ],
       "ajustes": [
         "Nada en el slicer: es hardware"
-      ]
+      ],
+      "en": {
+        "nombre": "Temperature error (thermal runaway / thermistor)",
+        "sintomas": [
+          "The printer shows a heating error",
+          "The temperature rises and falls out of control"
+        ],
+        "causas": [
+          "Loose thermistor or heater cable",
+          "Part fan blowing on the block",
+          "Damaged thermistor",
+          "Missing silicone sock"
+        ],
+        "pasos": [
+          "TURN OFF and unplug the printer before checking cables. An uncontrolled heater is a fire risk.",
+          "Check that the silicone sock is on the heater block.",
+          "Check the thermistor and heater connectors; move the head and see if the error appears.",
+          "Calibrate the PID: M303 E0 S220 C8 and save with M500.",
+          "Calibrate the PID: on Klipper with console access use PID_CALIBRATE HEATER=extruder TARGET=220 and SAVE_CONFIG; on stock Creality run the self-test from the screen and, if the error persists, check the thermistor and its cable.",
+          "If it continues, replace the thermistor or the whole hotend; contact the brand's support."
+        ],
+        "ajustes": [
+          "Nothing in the slicer: it's hardware"
+        ],
+        "claves": [
+          "thermal runaway",
+          "heating failed",
+          "heating error",
+          "thermistor error",
+          "mintemp",
+          "maxtemp",
+          "temperature error",
+          "temperature unstable",
+          "temperature fluctuates",
+          "temp keeps dropping"
+        ]
+      }
     },
     {
       "id": "molido",
@@ -1564,7 +2575,43 @@
       "ajustes": [
         "filament_max_volumetric_speed: bajar",
         "Temperatura: +5 °C"
-      ]
+      ],
+      "en": {
+        "nombre": "The extruder grinds or chews the filament",
+        "sintomas": [
+          "Plastic dust on the gears",
+          "Filament with deep bite marks",
+          "The extruder slips"
+        ],
+        "causas": [
+          "Clogged or partly clogged nozzle",
+          "Speed higher than the flow",
+          "Low temperature",
+          "Tension arm pressure too high"
+        ],
+        "pasos": [
+          "Clean the nozzle (cold pull) and check it isn't clogged.",
+          "Lower the speed or the maximum volumetric flow.",
+          "Raise 5–10 °C.",
+          "Clean the gears with a brush and remove the filament dust.",
+          "Loosen the extruder tensioner a little if it's adjustable."
+        ],
+        "ajustes": [
+          "filament_max_volumetric_speed: lower",
+          "Temperature: +5 °C"
+        ],
+        "claves": [
+          "grinding",
+          "grinds the filament",
+          "filament grinding",
+          "chewed filament",
+          "chews the filament",
+          "bite marks",
+          "plastic dust",
+          "extruder slipping",
+          "stripped filament"
+        ]
+      }
     },
     {
       "id": "quebradizo",
@@ -1611,7 +2658,39 @@
       ],
       "ajustes": [
         "Nada en el slicer"
-      ]
+      ],
+      "en": {
+        "nombre": "Filament snaps on its own",
+        "sintomas": [
+          "The filament breaks in the tube or on the spool",
+          "Broken pieces inside the extruder"
+        ],
+        "causas": [
+          "Old PLA or PLA that absorbed moisture",
+          "Very tight bends along the path",
+          "Spool stored in sun or heat"
+        ],
+        "pasos": [
+          "Dry the PLA at 50 °C for 6–8 h; it regains flexibility.",
+          "Avoid tight bends: position the spool so the filament feeds straight.",
+          "Store spools in an airtight box away from sunlight.",
+          "If it broke inside the AMS or tube, pull it all out before loading another."
+        ],
+        "ajustes": [
+          "Nothing in the slicer"
+        ],
+        "claves": [
+          "filament snaps",
+          "filament breaks",
+          "filament snapping",
+          "filament breaking",
+          "brittle filament",
+          "filament is brittle",
+          "filament cracks",
+          "snapped in the tube",
+          "broke in the ptfe"
+        ]
+      }
     },
     {
       "id": "vfa",
@@ -1657,7 +2736,38 @@
       ],
       "ajustes": [
         "outer_wall_speed: probar otros valores"
-      ]
+      ],
+      "en": {
+        "nombre": "Fine vertical lines or 'salmon skin' texture",
+        "sintomas": [
+          "Fine, regular vertical lines",
+          "Scale-like texture on flat walls"
+        ],
+        "causas": [
+          "Motor resonance at certain speeds",
+          "Pulleys or belts",
+          "Drivers in silent mode"
+        ],
+        "pasos": [
+          "Change the outer wall speed (try 150, 200, 250 mm/s); these marks show up at specific speeds.",
+          "Check belt tension and that pulleys aren't eccentric.",
+          "Print in 'Standard' speed mode, not 'Silent'.",
+          "Try disabling stealthChop on the drivers (spreadCycle mode)."
+        ],
+        "ajustes": [
+          "outer_wall_speed: try other values"
+        ],
+        "claves": [
+          "vfa",
+          "vertical fine artifacts",
+          "vertical lines",
+          "fine vertical lines",
+          "salmon skin",
+          "salmon texture",
+          "scales on the walls",
+          "vertical stripes"
+        ]
+      }
     },
     {
       "id": "cama-no-calienta",
@@ -1704,7 +2814,41 @@
       ],
       "ajustes": [
         "Nada en el slicer: es hardware"
-      ]
+      ],
+      "en": {
+        "nombre": "The bed won't heat or takes too long",
+        "sintomas": [
+          "The bed temperature doesn't rise",
+          "Bed heating error"
+        ],
+        "causas": [
+          "Damaged bed cable (it bends with movement)",
+          "Loose connector",
+          "Insufficient power supply",
+          "Very cold room or a draft"
+        ],
+        "pasos": [
+          "Turn it off and check the cable going to the bed: it's the one that bends and burns the most.",
+          "Check the connectors on the bed and on the board; a blackened one must be replaced.",
+          "On a bed slinger, check that the cable doesn't rub at the end of travel.",
+          "If there are cold drafts, move the printer to a sheltered spot."
+        ],
+        "ajustes": [
+          "Nothing in the slicer: it's hardware"
+        ],
+        "claves": [
+          "bed wont heat",
+          "bed won't heat",
+          "bed not heating",
+          "bed doesnt heat",
+          "bed doesn't heat",
+          "bed heats slowly",
+          "bed takes long to heat",
+          "bed cold",
+          "heated bed error",
+          "bed heating failed"
+        ]
+      }
     },
     {
       "id": "multicolor",
@@ -1757,7 +2901,46 @@
       ],
       "ajustes": [
         "flush_volumes: ajustar si hay manchas de color"
-      ]
+      ],
+      "en": {
+        "nombre": "Multicolor system (AMS, CFS, MMU) won't load",
+        "sintomas": [
+          "Error when loading or unloading",
+          "Filament stuck between the system and the toolhead"
+        ],
+        "causas": [
+          "Badly cut or flattened filament tip",
+          "Cardboard spool that slips",
+          "Kinked or disconnected PTFE tube",
+          "Wet or tangled filament"
+        ],
+        "pasos": [
+          "Cut the filament tip at an angle and clean it before loading.",
+          "Use an adapter for cardboard spools; they slip and cause errors.",
+          "Check that the PTFE tubes are fully seated and not kinked.",
+          "Don't use TPU or very abrasive fiber filaments in systems that don't support them.",
+          "Pull the stuck filament out from the back; never yank it with the nozzle cold."
+        ],
+        "ajustes": [
+          "flush_volumes: adjust if there's color bleed"
+        ],
+        "claves": [
+          "ams",
+          "ams wont load",
+          "ams won't load",
+          "ams error",
+          "ams jam",
+          "ams stuck",
+          "cfs",
+          "cfs error",
+          "mmu",
+          "mmu error",
+          "filament change failed",
+          "wont load filament",
+          "won't load filament",
+          "color change fails"
+        ]
+      }
     },
     {
       "id": "muy-pegado",
@@ -1807,7 +2990,41 @@
       ],
       "ajustes": [
         "Z-offset: +0.02 mm"
-      ]
+      ],
+      "en": {
+        "nombre": "The part won't come off the bed",
+        "sintomas": [
+          "You have to pry it off",
+          "Chunks of the plate get torn off"
+        ],
+        "causas": [
+          "PETG or TPU on smooth PEI",
+          "First layer squished too much",
+          "Bed still hot"
+        ],
+        "pasos": [
+          "Let the bed cool completely and flex the plate: most parts pop off on their own.",
+          "For PETG/TPU on smooth PEI use glue stick as a release layer.",
+          "Raise the Z-offset 0.02–0.04 mm.",
+          "Never use metal tools on PEI plates; use a plastic scraper."
+        ],
+        "ajustes": [
+          "Z-offset: +0.02 mm"
+        ],
+        "claves": [
+          "wont come off",
+          "won't come off",
+          "cant remove the part",
+          "can't remove the part",
+          "stuck to the bed",
+          "stuck on the bed",
+          "too stuck",
+          "fused to the bed",
+          "ripped the pei",
+          "tore the plate",
+          "part stuck"
+        ]
+      }
     },
     {
       "id": "escalones",
@@ -1843,7 +3060,36 @@
       "ajustes": [
         "Altura de capa variable: activar",
         "layer_height: 0.12"
-      ]
+      ],
+      "en": {
+        "nombre": "Visible steps on smooth curves",
+        "sintomas": [
+          "Top curves look like a staircase",
+          "Domes and roofs with visible layers"
+        ],
+        "causas": [
+          "Layer too tall for the curvature",
+          "Orientation"
+        ],
+        "pasos": [
+          "Use variable (adaptive) layer height in the slicer: fine layers only on curves.",
+          "Lower the layer to 0.12 mm on decorative parts.",
+          "Reorient: curves look better from the side than facing up."
+        ],
+        "ajustes": [
+          "Variable layer height: enable",
+          "layer_height: 0.12"
+        ],
+        "claves": [
+          "stair stepping",
+          "staircase",
+          "steps on curves",
+          "visible steps",
+          "stepped dome",
+          "layer lines on curves",
+          "terracing"
+        ]
+      }
     },
     {
       "id": "detalles-finos",
@@ -1890,7 +3136,40 @@
       "ajustes": [
         "wall_generator: arachne",
         "detect_thin_wall: 1"
-      ]
+      ],
+      "en": {
+        "nombre": "Fine details or thin walls disappear",
+        "sintomas": [
+          "Thin parts don't show up in the slicer",
+          "Small letters come out incomplete"
+        ],
+        "causas": [
+          "Walls thinner than the nozzle",
+          "Classic wall generator"
+        ],
+        "pasos": [
+          "Use the Arachne wall generator (it detects thin walls).",
+          "Enable 'detect thin walls'.",
+          "For real detail use a 0.2 mm nozzle and 0.08 mm layers.",
+          "Thicken the design: at least 0.8 mm for details with a 0.4 nozzle."
+        ],
+        "ajustes": [
+          "wall_generator: arachne",
+          "detect_thin_wall: 1"
+        ],
+        "claves": [
+          "fine details missing",
+          "details missing",
+          "small text missing",
+          "small letters",
+          "tiny text",
+          "thin walls missing",
+          "thin parts missing",
+          "details dont print",
+          "details don't print",
+          "small features"
+        ]
+      }
     },
     {
       "id": "petg-grumos",
@@ -1937,7 +3216,41 @@
       "ajustes": [
         "Temperatura: −5 °C",
         "z_hop: 0.4"
-      ]
+      ],
+      "en": {
+        "nombre": "PETG blobs stuck to the nozzle",
+        "sintomas": [
+          "Plastic builds up on the nozzle",
+          "Brown drops fall on the part"
+        ],
+        "causas": [
+          "PETG too hot",
+          "First layer squished too much",
+          "Not enough retraction or Z-hop",
+          "Nozzle not cleaned"
+        ],
+        "pasos": [
+          "Lower 5–10 °C.",
+          "Raise the Z-offset 0.02–0.05 mm for PETG; don't squish it like PLA.",
+          "Enable 0.4 mm Z-hop.",
+          "Clean the hot nozzle with a brass brush before printing.",
+          "Check the machine's nozzle wiper."
+        ],
+        "ajustes": [
+          "Temperature: −5 °C",
+          "z_hop: 0.4"
+        ],
+        "claves": [
+          "petg blobs",
+          "petg buildup",
+          "petg sticks to the nozzle",
+          "blobs on the nozzle",
+          "brown blobs",
+          "burnt blobs",
+          "gunk on the nozzle",
+          "petg boogers"
+        ]
+      }
     },
     {
       "id": "capas-faltantes",
@@ -1976,7 +3289,36 @@
       ],
       "ajustes": [
         "Nada en el slicer"
-      ]
+      ],
+      "en": {
+        "nombre": "Missing layers or horizontal gaps",
+        "sintomas": [
+          "A horizontal band with no material",
+          "A weak layer that separates"
+        ],
+        "causas": [
+          "Momentary clog",
+          "Z axis that binds",
+          "Filament tangled for a few seconds"
+        ],
+        "pasos": [
+          "Check the spool and the filament path.",
+          "Clean and lubricate the Z axis; move it by hand with the printer off and feel if it binds.",
+          "Do a cold pull to rule out debris in the nozzle."
+        ],
+        "ajustes": [
+          "Nothing in the slicer"
+        ],
+        "claves": [
+          "missing layers",
+          "missing layer",
+          "layer missing",
+          "gap in the layers",
+          "horizontal gap",
+          "skipped layers",
+          "empty band"
+        ]
+      }
     },
     {
       "id": "sobrecalentado",
@@ -2021,7 +3363,39 @@
       "ajustes": [
         "slow_down_layer_time: 8",
         "fan_max_speed: 100"
-      ]
+      ],
+      "en": {
+        "nombre": "Small parts melted or deformed",
+        "sintomas": [
+          "Tips or small parts lose their shape",
+          "Runny top layers"
+        ],
+        "causas": [
+          "Layer time too short",
+          "Not enough fan",
+          "High temperature"
+        ],
+        "pasos": [
+          "Raise the minimum layer time to 8–10 s (the slicer will slow down).",
+          "Print two copies at once so each one cools.",
+          "Fan at 100 % for PLA and lower 5 °C."
+        ],
+        "ajustes": [
+          "slow_down_layer_time: 8",
+          "fan_max_speed: 100"
+        ],
+        "claves": [
+          "melted",
+          "melting",
+          "overheating",
+          "overheated",
+          "tips melted",
+          "small parts melt",
+          "deformed tips",
+          "droopy tips",
+          "blobby top"
+        ]
+      }
     },
     {
       "id": "tambaleo",
@@ -2070,7 +3444,41 @@
       "ajustes": [
         "brim_width: 6",
         "default_acceleration: −40 %"
-      ]
+      ],
+      "en": {
+        "nombre": "Tall part wobbles, bends or falls over",
+        "sintomas": [
+          "The upper layers come out crooked",
+          "The part moves with the nozzle"
+        ],
+        "causas": [
+          "Base too small for the height",
+          "High acceleration (especially on bed slingers)",
+          "Accumulated heat"
+        ],
+        "pasos": [
+          "5–8 mm brim, or add a support 'wall' in the design.",
+          "Lower the acceleration 30–50 % on the upper part.",
+          "On a bed slinger the tall part sways with the bed: reduce Y acceleration.",
+          "Print several parts together, or lay it down if the use allows it."
+        ],
+        "ajustes": [
+          "brim_width: 6",
+          "default_acceleration: −40 %"
+        ],
+        "claves": [
+          "wobbles",
+          "wobbly",
+          "wobbling",
+          "tall part sways",
+          "sways",
+          "tall part falls",
+          "tall part bends",
+          "tower falls",
+          "leans",
+          "leaning"
+        ]
+      }
     },
     {
       "id": "choque",
@@ -2110,7 +3518,39 @@
       ],
       "ajustes": [
         "z_hop: 0.4"
-      ]
+      ],
+      "en": {
+        "nombre": "The nozzle hits the part",
+        "sintomas": [
+          "Knocking sounds",
+          "The nozzle knocks over or moves the part"
+        ],
+        "causas": [
+          "Curling on overhangs",
+          "Over-extrusion",
+          "Warping",
+          "No Z-hop"
+        ],
+        "pasos": [
+          "Enable 0.4 mm Z-hop.",
+          "Fix the curling: more fan and less temperature.",
+          "Calibrate the flow.",
+          "Check adhesion and warping."
+        ],
+        "ajustes": [
+          "z_hop: 0.4"
+        ],
+        "claves": [
+          "nozzle hits the part",
+          "nozzle crashes",
+          "nozzle collides",
+          "nozzle knocks",
+          "head hits the print",
+          "knocking",
+          "nozzle bumps",
+          "crashing into the print"
+        ]
+      }
     },
     {
       "id": "ruido",
@@ -2157,7 +3597,45 @@
       ],
       "ajustes": [
         "Nada en el slicer: mantenimiento"
-      ]
+      ],
+      "en": {
+        "nombre": "Noises, vibration or squeaking",
+        "sintomas": [
+          "New noises when moving",
+          "Strong vibration on the table"
+        ],
+        "causas": [
+          "Dry rails or rods",
+          "Dirty or damaged fan",
+          "Rubbing belt",
+          "Unstable table"
+        ],
+        "pasos": [
+          "Clean and lubricate the rails/rods with the recommended lubricant.",
+          "Identify the noise: if it changes with temperature it's a fan.",
+          "Check for belts rubbing against pulleys or housings.",
+          "Put the printer on a heavy base or anti-vibration mat.",
+          "Run the vibration calibration and check maintenance in the app."
+        ],
+        "ajustes": [
+          "Nothing in the slicer: maintenance"
+        ],
+        "claves": [
+          "noise",
+          "noisy",
+          "loud",
+          "squeaking",
+          "squeaks",
+          "grinding noise",
+          "rattling",
+          "rattle",
+          "vibration",
+          "vibrates",
+          "buzzing",
+          "weird noise",
+          "strange noise"
+        ]
+      }
     },
     {
       "id": "huecos-inicio",
@@ -2198,7 +3676,37 @@
       "ajustes": [
         "retraction_length: bajar",
         "retract_restart_extra: 0.05"
-      ]
+      ],
+      "en": {
+        "nombre": "Gaps at the start of each line",
+        "sintomas": [
+          "Each line starts thin or with a gap",
+          "Walls with gaps after travel moves"
+        ],
+        "causas": [
+          "Too much retraction",
+          "Filament oozing on long travels",
+          "Pressure advance too high"
+        ],
+        "pasos": [
+          "Lower retraction 0.2 mm at a time.",
+          "Add 0.05–0.1 mm of extra on restart (extra length on restart).",
+          "Check pressure advance: a high value leaves gaps at the start."
+        ],
+        "ajustes": [
+          "retraction_length: lower",
+          "retract_restart_extra: 0.05"
+        ],
+        "claves": [
+          "gaps at the start",
+          "gap at start of line",
+          "lines start thin",
+          "missing at start",
+          "start of each line",
+          "gaps after travel",
+          "holes after retraction"
+        ]
+      }
     },
     {
       "id": "colores",
@@ -2239,7 +3747,38 @@
       "ajustes": [
         "flush_volumes_matrix: subir oscuro→claro",
         "flush_into_infill: 1"
-      ]
+      ],
+      "en": {
+        "nombre": "Color bleed or mixing at color changes",
+        "sintomas": [
+          "The new color carries traces of the previous one",
+          "Stains in the first layers of each color"
+        ],
+        "causas": [
+          "Purge volume too low",
+          "Switching from dark to light"
+        ],
+        "pasos": [
+          "Raise the flushing volumes from dark to light colors.",
+          "Enable 'flush into infill' or 'flush into object' to use the waste.",
+          "Group colors to reduce changes."
+        ],
+        "ajustes": [
+          "flush_volumes_matrix: raise dark→light",
+          "flush_into_infill: 1"
+        ],
+        "claves": [
+          "color bleed",
+          "colors mixing",
+          "colors mix",
+          "colour bleed",
+          "color contamination",
+          "previous color",
+          "dirty color",
+          "stained color",
+          "muddy colors"
+        ]
+      }
     },
     {
       "id": "soportes-caen",
@@ -2283,7 +3822,41 @@
         "support_type: tree(auto)",
         "support_speed: 80",
         "raft_first_layer_expansion: 2"
-      ]
+      ],
+      "en": {
+        "nombre": "Supports fall over or don't form",
+        "sintomas": [
+          "Supports that bend or come loose",
+          "Spaghetti under overhangs"
+        ],
+        "causas": [
+          "Thin, tall supports",
+          "Small support base",
+          "High speed on supports"
+        ],
+        "pasos": [
+          "Use tree supports (more stable) and turn on a support base/brim.",
+          "Lower support speed to 60–80 mm/s.",
+          "Raise support density to 20 %."
+        ],
+        "ajustes": [
+          "support_type: tree(auto)",
+          "support_speed: 80",
+          "raft_first_layer_expansion: 2"
+        ],
+        "claves": [
+          "supports fall",
+          "supports fell",
+          "supports falling",
+          "supports fail",
+          "support failed",
+          "supports collapse",
+          "supports came loose",
+          "supports dont form",
+          "supports don't form",
+          "support spaghetti"
+        ]
+      }
     },
     {
       "id": "altura-z",
@@ -2325,7 +3898,45 @@
       ],
       "ajustes": [
         "layer_height: múltiplo de 0.04"
-      ]
+      ],
+      "en": {
+        "nombre": "The part's height doesn't match",
+        "sintomas": [
+          "The part is taller or shorter than the design"
+        ],
+        "causas": [
+          "First layer squished too much",
+          "Z steps miscalibrated",
+          "Layer height not a multiple of the motor step"
+        ],
+        "pasos": [
+          "Check the first layer: squishing it reduces the total height.",
+          "Print a 20 mm cube and measure; adjust Z steps (M92 Z) if the difference is constant.",
+          "Use layer heights that are multiples of 0.04 mm."
+        ],
+        "ajustes": [
+          "layer_height: multiple of 0.04"
+        ],
+        "claves": [
+          "height is wrong",
+          "wrong height",
+          "too short",
+          "shorter than",
+          "taller than",
+          "height doesnt match",
+          "height doesn't match",
+          "z height off",
+          "part is short"
+        ]
+      }
     }
-  ]
+  ],
+  "categorias_en": {
+    "Adhesión": "Adhesion",
+    "Extrusión": "Extrusion",
+    "Superficie": "Surface",
+    "Mecánica": "Mechanical",
+    "Estructura": "Structure",
+    "Soportes": "Supports"
+  }
 }
