@@ -1,5 +1,5 @@
 {
- "version": "2026.11.26",
+ "version": "2026.11.27",
  "fuente": "Calculadora_Impresion_3D_PETG.xlsx",
  "base": {
   "materiales": [
@@ -48,7 +48,7 @@
  "grupos": [
   {
    "nombre": "Llaveros",
-   "nota": "Precios de tiendas mexicanas en línea (3Dream Studio, Totopo, Sundara, Mapiverde), consultados 2026-11-26.",
+   "nota": "Precios de tiendas mexicanas en línea (3Dream Studio, Totopo, Sundara, Mapiverde), consultados 2026-11-27.",
    "productos": [
     {
      "id": "m-llavero-personaje",
@@ -138,7 +138,7 @@
   },
   {
    "nombre": "Regalos y temporada navideña",
-   "nota": "Etsy México (precios en MXN, vendedores de varios países) y 3Dream Studio, consultados 2026-11-26.",
+   "nota": "Etsy México (precios en MXN, vendedores de varios países) y 3Dream Studio, consultados 2026-11-27.",
    "productos": [
     {
      "id": "m-set-adornos-navidenos",
@@ -222,7 +222,7 @@
   },
   {
    "nombre": "Figuras y juguetes articulados",
-   "nota": "Etsy México, 3Dream Studio, Sundara y El Arte 3D, consultados 2026-11-26.",
+   "nota": "Etsy México, 3Dream Studio, Sundara y El Arte 3D, consultados 2026-11-27.",
    "productos": [
     {
      "id": "m-dragon-articulado",
@@ -323,7 +323,7 @@
   },
   {
    "nombre": "Gamer y escritorio",
-   "nota": "El Arte 3D, Etsy México y 3Dream Studio, consultados 2026-11-26.",
+   "nota": "El Arte 3D, Etsy México y 3Dream Studio, consultados 2026-11-27.",
    "productos": [
     {
      "id": "m-soporte-control-ps5",
@@ -386,7 +386,7 @@
   },
   {
    "nombre": "Decoración y hogar",
-   "nota": "Macetopia, Etsy México, PFB3D y 3Dream Studio, consultados 2026-11-26.",
+   "nota": "Macetopia, Etsy México, PFB3D y 3Dream Studio, consultados 2026-11-27.",
    "productos": [
     {
      "id": "m-maceta-diseno",
@@ -467,5 +467,5 @@
    ]
   }
  ],
- "actualizado": "2026-11-26"
+ "actualizado": "2026-11-27"
 }
