@@ -1,0 +1,49 @@
+{
+  "version": "2026.11.7",
+  "fuente": "Calculadora_Impresion_3D_PETG.xlsx",
+  "base": {
+    "materiales": [
+      {
+        "id": "petg",
+        "nombre": "PETG",
+        "rollo": 350,
+        "peso": 1000
+      },
+      {
+        "id": "pla",
+        "nombre": "PLA",
+        "rollo": 350,
+        "peso": 1000
+      }
+    ],
+    "kwh": 0.15,
+    "tarifa": 3.5,
+    "desgaste": 5,
+    "mPublico": 2.5,
+    "mRevendedor": 1.8,
+    "redondeo": 5
+  },
+  "insumos": [
+    {
+      "id": "aro",
+      "nombre": "Aro de llavero",
+      "precio": 1.5
+    },
+    {
+      "id": "clicker",
+      "nombre": "Clicker",
+      "precio": 4.66
+    },
+    {
+      "id": "mano",
+      "nombre": "Mano de obra",
+      "precio": 5
+    },
+    {
+      "id": "resina",
+      "nombre": "Resina",
+      "precio": 5
+    }
+  ],
+  "grupos": []
+}

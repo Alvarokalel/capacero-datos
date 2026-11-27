@@ -1,0 +1,2073 @@
+{
+  "version": "2026.11.4",
+  "categorias": [
+    "Adhesión",
+    "Extrusión",
+    "Superficie",
+    "Mecánica",
+    "Estructura",
+    "Soportes"
+  ],
+  "fallas": [
+    {
+      "id": "no-pega",
+      "nombre": "La primera capa no pega",
+      "cat": "Adhesión",
+      "sintomas": [
+        "El filamento se arrastra con la boquilla",
+        "Las líneas quedan redondas y sueltas",
+        "La pieza se despega a los pocos minutos"
+      ],
+      "causas": [
+        "Cama sucia (grasa de dedos)",
+        "Boquilla demasiado alta (Z-offset)",
+        "Temperatura de cama baja",
+        "Primera capa muy rápida",
+        "Superficie de cama equivocada para el material"
+      ],
+      "pasos": [
+        {
+          "t": "Lava la placa con agua tibia y jabón de trastes, sécala y no la toques con los dedos. El alcohol isopropílico ayuda entre impresiones, pero el jabón quita la grasa de verdad."
+        },
+        {
+          "t": "Corre la calibración automática desde la pantalla (nivelación de cama) antes de imprimir.",
+          "si": {
+            "fw": "bambu"
+          }
+        },
+        {
+          "t": "Revisa que la placa esté bien asentada sobre los imanes y sin basura debajo; una placa doblada falla aunque calibres.",
+          "si": {
+            "fw": "bambu"
+          }
+        },
+        {
+          "t": "Nivela a mano con una hoja de papel en las 4 esquinas y el centro, con la cama caliente. Repite dos vueltas.",
+          "si": {
+            "niv": "manual"
+          }
+        },
+        {
+          "t": "Ajusta el Z-offset en pasos de 0.02 mm mientras imprime una primera capa de prueba hasta que las líneas queden planas y unidas.",
+          "si": {
+            "niv": "sensor"
+          }
+        },
+        {
+          "t": "Ajusta Z-offset en vivo (Tune > Z offset) o con PROBE_CALIBRATE y guarda con SAVE_CONFIG.",
+          "si": {
+            "fw": "klipper"
+          }
+        },
+        {
+          "t": "Usa la calibración de primera capa (First Layer Calibration) del asistente.",
+          "si": {
+            "fw": "prusa"
+          }
+        },
+        {
+          "t": "Sube la cama 5 °C y baja la velocidad de primera capa a 30–40 mm/s."
+        },
+        {
+          "t": "PETG en placa lisa PEI pega demasiado: usa pegamento en barra como separador. PLA en placa texturizada no necesita nada."
+        }
+      ],
+      "ajustes": [
+        "initial_layer_speed: 30–40 mm/s",
+        "initial_layer_print_height: 0.2–0.25 mm",
+        "brim_type: outer_only si la pieza es pequeña"
+      ],
+      "claves": [
+        "no pega",
+        "se despega",
+        "no se adhiere",
+        "no se queda pegad",
+        "se arrastra",
+        "primera capa",
+        "adherencia",
+        "se levanta todo",
+        "se despega de la cama",
+        "se despega la pieza",
+        "no se pega",
+        "se suelta de la cama",
+        "no agarra"
+      ]
+    },
+    {
+      "id": "warping",
+      "nombre": "Esquinas levantadas (warping)",
+      "cat": "Adhesión",
+      "sintomas": [
+        "Las esquinas se curvan hacia arriba",
+        "La base queda en forma de plato",
+        "Grietas en la parte baja de piezas grandes"
+      ],
+      "causas": [
+        "Material que encoge al enfriar (ABS, ASA, Nylon, PETG grande)",
+        "Corrientes de aire",
+        "Ventilador de capa demasiado fuerte",
+        "Poca superficie de contacto"
+      ],
+      "pasos": [
+        {
+          "t": "Agrega brim de 5–8 mm o 'brim ears' en las esquinas."
+        },
+        {
+          "t": "Para ABS/ASA usa una impresora cerrada o pon una caja/carpa encima; precalienta la cama 10 minutos con la puerta cerrada.",
+          "si": {
+            "cerr": false
+          }
+        },
+        {
+          "t": "Cierra puerta y tapa y deja que la cámara se caliente antes de empezar; apaga el ventilador auxiliar.",
+          "si": {
+            "cerr": true
+          }
+        },
+        {
+          "t": "Baja el ventilador de capa a 0–20 % en ABS/ASA y a 30–50 % en PETG."
+        },
+        {
+          "t": "Redondea las esquinas filosas en el diseño o agrega 'orejas' de 0.4 mm de alto."
+        },
+        {
+          "t": "Sube la temperatura de cama 5–10 °C y aleja la impresora de ventanas y del aire acondicionado."
+        }
+      ],
+      "ajustes": [
+        "brim_type: outer_only, brim_width: 6",
+        "Ventilador de capa: bajar",
+        "Cama: +5–10 °C"
+      ],
+      "claves": [
+        "warping",
+        "esquinas levant",
+        "se curva",
+        "se levantan las esquinas",
+        "se doblan las esquinas",
+        "plato",
+        "se enchueca la base",
+        "se despegan las esquinas",
+        "esquinas se despeg",
+        "se despega de las esquinas",
+        "orillas se levant",
+        "se levantan las orillas",
+        "se levanta de las puntas",
+        "puntas se levant",
+        "se levanta la pieza",
+        "se enrosca la base",
+        "se dobla la base",
+        "despega de las orillas"
+      ]
+    },
+    {
+      "id": "hilos",
+      "nombre": "Hilos y telarañas (stringing)",
+      "cat": "Superficie",
+      "sintomas": [
+        "Hilos finos entre partes separadas",
+        "Pelusa tipo telaraña",
+        "Gotitas en los viajes"
+      ],
+      "causas": [
+        "Filamento húmedo",
+        "Temperatura demasiado alta",
+        "Retracción insuficiente",
+        "Viajes lentos"
+      ],
+      "pasos": [
+        {
+          "t": "Seca el filamento: PLA 50 °C 6 h, PETG 65 °C 6 h, TPU 55 °C 8 h. Es la causa número uno en PETG y TPU."
+        },
+        {
+          "t": "Baja la temperatura de boquilla de 5 en 5 °C con una torre de temperatura."
+        },
+        {
+          "t": "Retracción en extrusor directo: 0.5–1.5 mm. Sube de 0.2 en 0.2 mm.",
+          "si": {
+            "ext": "directo"
+          }
+        },
+        {
+          "t": "Retracción en Bowden: 4–6 mm a 35–45 mm/s. Revisa que el tubo PTFE no tenga juego en los acopladores.",
+          "si": {
+            "ext": "bowden"
+          }
+        },
+        {
+          "t": "Calibra Pressure Advance (Orca: Calibración > Pressure advance) y guárdalo en el perfil del filamento.",
+          "si": {
+            "fw": "klipper"
+          }
+        },
+        {
+          "t": "Corre la calibración de flujo dinámico (Flow Dynamics) para ese filamento.",
+          "si": {
+            "fw": "bambu"
+          }
+        },
+        {
+          "t": "Activa 'Evitar cruzar paredes' y sube la velocidad de viaje."
+        }
+      ],
+      "ajustes": [
+        "reduce_crossing_wall: activado",
+        "Temperatura: −5 °C",
+        "Retracción: ver pasos"
+      ],
+      "claves": [
+        "hilos",
+        "telarana",
+        "stringing",
+        "pelos",
+        "cabello",
+        "hebras",
+        "hilitos",
+        "barbas",
+        "cabellos"
+      ]
+    },
+    {
+      "id": "subextrusion",
+      "nombre": "Sub-extrusión (huecos, paredes delgadas)",
+      "cat": "Extrusión",
+      "sintomas": [
+        "Huecos entre líneas",
+        "Paredes que se ven a través",
+        "Relleno esponjoso y débil",
+        "Capas que se separan fácil"
+      ],
+      "causas": [
+        "Velocidad mayor al flujo máximo del hotend",
+        "Boquilla parcialmente tapada",
+        "Engranes del extrusor sucios o con poca presión",
+        "Filamento enredado o carrete duro",
+        "Temperatura baja para la velocidad"
+      ],
+      "pasos": [
+        {
+          "t": "Baja la velocidad o limita el flujo volumétrico máximo en el perfil del filamento (PLA genérico ~15 mm³/s)."
+        },
+        {
+          "t": "Sube 5–10 °C si imprimes muy rápido."
+        },
+        {
+          "t": "Haz una purga en frío (cold pull) para limpiar la boquilla."
+        },
+        {
+          "t": "Revisa que el carrete gire libre y que el filamento no esté enredado."
+        },
+        {
+          "t": "Revisa el tubo PTFE: debe llegar pegado a la boquilla sin hueco; un hueco crea atascos.",
+          "si": {
+            "ext": "bowden"
+          }
+        },
+        {
+          "t": "Calibra la tasa de flujo (Orca: Calibración > Flow rate) por filamento."
+        },
+        {
+          "t": "Limpia los engranes del extrusor con un cepillo de dientes; los dientes llenos de polvo patinan."
+        }
+      ],
+      "ajustes": [
+        "filament_max_volumetric_speed: bajar",
+        "Flow ratio: calibrar",
+        "Temperatura: +5 °C"
+      ],
+      "claves": [
+        "huecos",
+        "sub extru",
+        "subextru",
+        "falta material",
+        "paredes delgadas",
+        "se ve a traves",
+        "debil",
+        "esponj",
+        "huecos en las paredes",
+        "falta plastico",
+        "sub extrusion",
+        "subextrusion",
+        "lineas separadas"
+      ]
+    },
+    {
+      "id": "sobreextrusion",
+      "nombre": "Sobre-extrusión (bultos, medidas grandes)",
+      "cat": "Extrusión",
+      "sintomas": [
+        "Paredes gruesas y rugosas",
+        "La boquilla raspa la superficie superior",
+        "Agujeros más chicos de lo diseñado"
+      ],
+      "causas": [
+        "Flow ratio alto",
+        "Diámetro de filamento mal configurado",
+        "Primera capa demasiado aplastada"
+      ],
+      "pasos": [
+        {
+          "t": "Calibra el flujo con el asistente del slicer y baja en pasos de 2 %."
+        },
+        {
+          "t": "Confirma que el filamento esté configurado como 1.75 mm y mídelo con vernier en 3 puntos."
+        },
+        {
+          "t": "Si solo pasa en la primera capa, sube el Z-offset 0.02–0.04 mm."
+        }
+      ],
+      "ajustes": [
+        "filament_flow_ratio: −2 %",
+        "elefant_foot_compensation: 0.1–0.15 mm"
+      ],
+      "claves": [
+        "sobre extru",
+        "sobreextru",
+        "sobra material",
+        "paredes gruesas",
+        "rebaba",
+        "exceso",
+        "bultos",
+        "sale con bultos",
+        "grumos en las paredes",
+        "sobre extrusion",
+        "sobreextrusion",
+        "demasiado plastico"
+      ]
+    },
+    {
+      "id": "tapada",
+      "nombre": "No sale filamento / boquilla tapada",
+      "cat": "Extrusión",
+      "sintomas": [
+        "La impresora se mueve pero no extruye",
+        "El extrusor hace clic",
+        "Sale solo un hilito"
+      ],
+      "causas": [
+        "Basura o carbón dentro de la boquilla",
+        "Heat creep (el filamento se ablanda arriba)",
+        "Cambio de material sin purgar",
+        "Filamento húmedo o de mala calidad"
+      ],
+      "pasos": [
+        {
+          "t": "Calienta a 250 °C y empuja filamento a mano; luego haz 2–3 purgas en frío (cold pull) a 90 °C para PLA."
+        },
+        {
+          "t": "Con PLA en impresora cerrada abre la puerta y quita la tapa superior: el calor de la cámara causa heat creep.",
+          "si": {
+            "cerr": true
+          }
+        },
+        {
+          "t": "Revisa que el ventilador del disipador (el que siempre gira) funcione."
+        },
+        {
+          "t": "Usa la aguja de limpieza por abajo con la boquilla caliente. Si sigue, cambia la boquilla: es consumible."
+        },
+        {
+          "t": "En el A1/P1/X1 el hotend se cambia completo en pocos minutos; tener uno de repuesto ahorra días.",
+          "si": {
+            "fw": "bambu"
+          }
+        },
+        {
+          "t": "Al pasar de PETG/ABS a PLA, purga a la temperatura más alta antes de bajar."
+        }
+      ],
+      "ajustes": [
+        "Nada en el slicer: es mantenimiento"
+      ],
+      "claves": [
+        "tapad",
+        "no sale",
+        "no extruye",
+        "atasc",
+        "clic",
+        "tapon",
+        "obstru",
+        "no sale plastico",
+        "no saca plastico",
+        "no sale filamento",
+        "boquilla tapada",
+        "tapada",
+        "atascad",
+        "no sale nada"
+      ]
+    },
+    {
+      "id": "desplazamiento",
+      "nombre": "Capas desplazadas (layer shift)",
+      "cat": "Mecánica",
+      "sintomas": [
+        "La pieza se 'escalona' de golpe en X o Y",
+        "Mitad de la pieza movida varios milímetros"
+      ],
+      "causas": [
+        "Bandas flojas o poleas sueltas",
+        "La boquilla chocó con la pieza (warping o curl)",
+        "Aceleración muy alta para la máquina",
+        "Motores sobrecalentados"
+      ],
+      "pasos": [
+        {
+          "t": "Tensa las bandas: deben sonar como cuerda grave, no flácidas. Aprieta los tornillos prisioneros de las poleas."
+        },
+        {
+          "t": "Activa Z-hop en viajes si la pieza se curva hacia arriba en voladizos."
+        },
+        {
+          "t": "Baja aceleraciones 30 % y prueba de nuevo."
+        },
+        {
+          "t": "En cama móvil, revisa las ruedas excéntricas: la cama no debe tener juego ni estar dura.",
+          "si": {
+            "cin": "cama-y"
+          }
+        },
+        {
+          "t": "En CoreXY revisa que ambas bandas tengan la misma tensión (app de frecuencia o la de la marca).",
+          "si": {
+            "cin": "corexy"
+          }
+        },
+        {
+          "t": "Lubrica los rieles/varillas y revisa que no haya cables rozando."
+        }
+      ],
+      "ajustes": [
+        "default_acceleration: −30 %",
+        "z_hop: 0.4 mm"
+      ],
+      "claves": [
+        "capas movidas",
+        "se movio",
+        "desplaz",
+        "layer shift",
+        "escalon de golpe",
+        "corrid",
+        "desfas",
+        "se recorrieron",
+        "capas recorridas",
+        "se movio de lado",
+        "se desfaso",
+        "capas chuecas",
+        "se corrio"
+      ]
+    },
+    {
+      "id": "pata-elefante",
+      "nombre": "Pata de elefante (base ensanchada)",
+      "cat": "Superficie",
+      "sintomas": [
+        "Las primeras capas sobresalen como labio",
+        "Las piezas no ensamblan abajo"
+      ],
+      "causas": [
+        "Primera capa demasiado aplastada",
+        "Cama demasiado caliente",
+        "Peso de la pieza sobre capas blandas"
+      ],
+      "pasos": [
+        {
+          "t": "Sube el Z-offset 0.02 mm."
+        },
+        {
+          "t": "Baja la cama 5 °C después de la primera capa."
+        },
+        {
+          "t": "Usa compensación de pata de elefante en el slicer o un chaflán de 0.5 mm en el diseño."
+        }
+      ],
+      "ajustes": [
+        "elefant_foot_compensation: 0.15 mm"
+      ],
+      "claves": [
+        "pata de elefante",
+        "elephant",
+        "base ancha",
+        "labio",
+        "base ensanchada",
+        "base mas ancha",
+        "base sale ancha",
+        "primera capa ancha",
+        "base aplastada",
+        "mas ancha abajo",
+        "sale mas ancha",
+        "base sale mas ancha",
+        "abajo mas ancha"
+      ]
+    },
+    {
+      "id": "ghosting",
+      "nombre": "Ondas o ecos en las paredes (ringing)",
+      "cat": "Superficie",
+      "sintomas": [
+        "Ondas repetidas después de esquinas o letras",
+        "Ecos de los detalles sobre la pared"
+      ],
+      "causas": [
+        "Aceleración alta sin compensación de resonancia",
+        "Bandas flojas",
+        "Impresora en mesa que se mueve",
+        "Cama pesada en máquinas de cama móvil"
+      ],
+      "pasos": [
+        {
+          "t": "Corre la calibración de vibración (Vibration compensation) desde la pantalla.",
+          "si": {
+            "fw": "bambu"
+          }
+        },
+        {
+          "t": "Mide resonancias con acelerómetro (SHAPER_CALIBRATE) y guarda el input shaper.",
+          "si": {
+            "fw": "klipper"
+          }
+        },
+        {
+          "t": "Baja aceleración de pared externa a 1500–3000 mm/s² y la velocidad de pared externa.",
+          "si": {
+            "fw": "marlin"
+          }
+        },
+        {
+          "t": "Pon la impresora en una superficie sólida y pesada; una mesa que se mece arruina el acabado."
+        },
+        {
+          "t": "En piezas altas, baja la aceleración: la cama carga más peso y la pieza se mece.",
+          "si": {
+            "cin": "cama-y"
+          }
+        }
+      ],
+      "ajustes": [
+        "outer_wall_acceleration: bajar",
+        "outer_wall_speed: bajar"
+      ],
+      "claves": [
+        "ondas",
+        "ecos",
+        "ringing",
+        "ghosting",
+        "fantasma",
+        "ondulacion"
+      ]
+    },
+    {
+      "id": "espagueti",
+      "nombre": "Espagueti (la impresión se desprende a la mitad)",
+      "cat": "Adhesión",
+      "sintomas": [
+        "Bola de filamento sobre la cama",
+        "La pieza se cayó o se movió"
+      ],
+      "causas": [
+        "Mala adhesión",
+        "Piezas altas y delgadas que se mecen",
+        "Soportes que se cayeron",
+        "La boquilla golpeó una parte curvada"
+      ],
+      "pasos": [
+        {
+          "t": "Resuelve primero la adhesión (ver 'La primera capa no pega')."
+        },
+        {
+          "t": "Para piezas altas y delgadas usa brim de 5–8 mm y baja la aceleración."
+        },
+        {
+          "t": "Activa la detección de espagueti de la cámara.",
+          "si": {
+            "fw": "bambu"
+          }
+        },
+        {
+          "t": "Reorienta la pieza: la cara más grande y plana abajo."
+        }
+      ],
+      "ajustes": [
+        "brim_width: 6 mm",
+        "Aceleración: −30 % en piezas altas"
+      ],
+      "claves": [
+        "espagueti",
+        "spaghetti",
+        "bola de filamento",
+        "se cayo",
+        "nido",
+        "maraña",
+        "marana",
+        "se hizo espagueti",
+        "nido de pajaro",
+        "se desprendio a la mitad"
+      ]
+    },
+    {
+      "id": "voladizos",
+      "nombre": "Voladizos y puentes caídos",
+      "cat": "Soportes",
+      "sintomas": [
+        "Bordes de abajo rizados",
+        "Puentes colgando",
+        "Superficie inferior fea en ángulos"
+      ],
+      "causas": [
+        "Ángulo mayor a 45–50° sin soporte",
+        "Poco enfriamiento",
+        "Velocidad alta en puentes",
+        "Temperatura alta"
+      ],
+      "pasos": [
+        {
+          "t": "Activa soportes tipo árbol (tree) solo donde se necesiten."
+        },
+        {
+          "t": "Gira la pieza para reducir voladizos; a veces 45° resuelve todo."
+        },
+        {
+          "t": "Ventilador al 100 % en PLA para puentes y velocidad de puente 25–50 mm/s."
+        },
+        {
+          "t": "Baja la temperatura 5 °C."
+        }
+      ],
+      "ajustes": [
+        "enable_support: 1, support_type: tree(auto)",
+        "bridge_speed: 30–50 mm/s",
+        "overhang_fan_speed: 100 %"
+      ],
+      "claves": [
+        "voladizo",
+        "puente",
+        "cuelga",
+        "overhang",
+        "bridge",
+        "colgand"
+      ]
+    },
+    {
+      "id": "delaminacion",
+      "nombre": "Capas que se separan (delaminación)",
+      "cat": "Estructura",
+      "sintomas": [
+        "Grietas horizontales",
+        "La pieza se rompe fácil entre capas"
+      ],
+      "causas": [
+        "Temperatura baja",
+        "Demasiado ventilador (ABS/ASA)",
+        "Sub-extrusión",
+        "Capa alta para la boquilla"
+      ],
+      "pasos": [
+        {
+          "t": "Sube 5–10 °C la boquilla."
+        },
+        {
+          "t": "Baja ventilador en ABS/ASA/PETG."
+        },
+        {
+          "t": "La altura de capa no debe pasar del 70 % del diámetro de boquilla (0.28 mm en 0.4)."
+        },
+        {
+          "t": "Para resistencia usa más paredes (4–5) en vez de más relleno."
+        }
+      ],
+      "ajustes": [
+        "wall_loops: 4–5",
+        "Temperatura: +5–10 °C",
+        "Ventilador: bajar"
+      ],
+      "claves": [
+        "se separan las capas",
+        "delamin",
+        "grieta",
+        "se parte entre capas",
+        "se rompe en capas",
+        "fisura"
+      ]
+    },
+    {
+      "id": "pillowing",
+      "nombre": "Huecos o burbujas en la cara superior",
+      "cat": "Superficie",
+      "sintomas": [
+        "La tapa de arriba tiene agujeros",
+        "Se ve el relleno abajo",
+        "Superficie con burbujas"
+      ],
+      "causas": [
+        "Pocas capas superiores",
+        "Relleno muy bajo",
+        "Poco enfriamiento"
+      ],
+      "pasos": [
+        {
+          "t": "Usa al menos 1 mm de capas superiores (5 capas a 0.2 mm)."
+        },
+        {
+          "t": "Sube relleno a 15 % o usa relleno de soporte interno."
+        },
+        {
+          "t": "Activa planchado (ironing) en la última capa si quieres cara superior lisa."
+        }
+      ],
+      "ajustes": [
+        "top_shell_layers: 5+",
+        "ironing_type: top"
+      ],
+      "claves": [
+        "huecos arriba",
+        "cara superior",
+        "pillowing",
+        "burbujas arriba",
+        "tapa con agujeros",
+        "se ve el relleno arriba",
+        "hoyos en la tapa",
+        "hoyos arriba",
+        "huecos en la tapa",
+        "tapa con hoyos",
+        "cara de arriba con hoyos"
+      ]
+    },
+    {
+      "id": "costura",
+      "nombre": "Granitos o costura muy visible",
+      "cat": "Superficie",
+      "sintomas": [
+        "Línea vertical de puntitos",
+        "Granos aleatorios en la pared"
+      ],
+      "causas": [
+        "Posición de costura aleatoria",
+        "Pressure advance sin calibrar",
+        "Retracción mal ajustada"
+      ],
+      "pasos": [
+        {
+          "t": "Pon la costura en 'atrás' o 'alineada' y orienta la pieza para esconderla."
+        },
+        {
+          "t": "Calibra pressure advance / flujo dinámico."
+        },
+        {
+          "t": "Activa 'scarf seam' en Orca para costuras casi invisibles."
+        }
+      ],
+      "ajustes": [
+        "seam_position: back",
+        "seam_slope_type: external (scarf)"
+      ],
+      "claves": [
+        "costura",
+        "seam",
+        "granitos",
+        "zits",
+        "puntitos",
+        "linea vertical"
+      ]
+    },
+    {
+      "id": "z-banding",
+      "nombre": "Líneas horizontales repetidas (Z-banding)",
+      "cat": "Mecánica",
+      "sintomas": [
+        "Bandas regulares en altura",
+        "Patrón que se repite cada pocos mm"
+      ],
+      "causas": [
+        "Tornillo Z chueco o sucio",
+        "Acoplador flojo",
+        "Temperatura de cama que oscila",
+        "Altura de capa que no coincide con pasos del motor"
+      ],
+      "pasos": [
+        {
+          "t": "Limpia y lubrica los tornillos Z; revisa que estén rectos."
+        },
+        {
+          "t": "Usa alturas de capa múltiplos de 0.04 mm (0.12, 0.16, 0.2, 0.24, 0.28)."
+        },
+        {
+          "t": "En máquinas con dos motores Z, revisa que estén sincronizados.",
+          "si": {
+            "fw": "marlin"
+          }
+        }
+      ],
+      "ajustes": [
+        "layer_height: múltiplo de 0.04"
+      ],
+      "claves": [
+        "bandas",
+        "z banding",
+        "lineas horizontales",
+        "rayas horizontales",
+        "wobble"
+      ]
+    },
+    {
+      "id": "soportes-pegados",
+      "nombre": "Soportes imposibles de quitar",
+      "cat": "Soportes",
+      "sintomas": [
+        "El soporte se rompe junto con la pieza",
+        "Cara inferior fea al quitar"
+      ],
+      "causas": [
+        "Distancia Z de soporte muy pequeña",
+        "Interfaz demasiado densa",
+        "Material de soporte igual al de la pieza"
+      ],
+      "pasos": [
+        {
+          "t": "Distancia Z superior: 0.2 mm (igual a una capa)."
+        },
+        {
+          "t": "Usa soportes árbol con patrón de interfaz de líneas cruzadas."
+        },
+        {
+          "t": "Con AMS usa PETG como interfaz para PLA (no pegan entre sí).",
+          "si": {
+            "fw": "bambu"
+          }
+        }
+      ],
+      "ajustes": [
+        "support_top_z_distance: 0.2",
+        "support_interface_spacing: 0.5"
+      ],
+      "claves": [
+        "soporte pegado",
+        "no se quita el soporte",
+        "soportes dificiles",
+        "soporte se rompe"
+      ]
+    },
+    {
+      "id": "medidas",
+      "nombre": "Medidas incorrectas / agujeros chicos",
+      "cat": "Estructura",
+      "sintomas": [
+        "Tornillos no entran",
+        "Piezas no encajan"
+      ],
+      "causas": [
+        "Sobre-extrusión",
+        "Contracción del material",
+        "Sin compensación de agujeros"
+      ],
+      "pasos": [
+        {
+          "t": "Calibra flujo primero."
+        },
+        {
+          "t": "Usa compensación XY de agujeros (+0.1 a +0.2 mm)."
+        },
+        {
+          "t": "Diseña con holgura de 0.2 mm por lado para ensambles."
+        }
+      ],
+      "ajustes": [
+        "xy_hole_compensation: 0.1",
+        "xy_contour_compensation: 0"
+      ],
+      "claves": [
+        "medidas",
+        "no encaja",
+        "no entra el tornillo",
+        "agujeros chicos",
+        "tolerancia",
+        "dimension",
+        "agujeros salen chicos",
+        "agujeros mas chicos",
+        "medidas incorrectas",
+        "sale mas chica",
+        "sale mas grande",
+        "agujeros salen mas chicos",
+        "agujeros quedan chicos",
+        "hoyos chicos"
+      ]
+    },
+    {
+      "id": "humedo",
+      "nombre": "Filamento húmedo (chasquidos, superficie rugosa)",
+      "cat": "Extrusión",
+      "sintomas": [
+        "Se oyen chasquidos o burbujeo",
+        "Vapor saliendo de la boquilla",
+        "Superficie opaca y rugosa",
+        "Mucho stringing"
+      ],
+      "causas": [
+        "Filamento expuesto a la humedad del ambiente"
+      ],
+      "pasos": [
+        {
+          "t": "Seca el filamento en secadora o en horno a baja temperatura (PLA 50 °C, PETG 65 °C, TPU 55 °C, Nylon 80 °C) 6–8 h."
+        },
+        {
+          "t": "Guárdalo en caja hermética con sílica gel; imprime desde caja seca si vives en clima húmedo."
+        }
+      ],
+      "ajustes": [
+        "Nada en el slicer: hay que secar"
+      ],
+      "claves": [
+        "humed",
+        "chasquid",
+        "burbuj",
+        "vapor",
+        "truena",
+        "crujid",
+        "palomitas"
+      ]
+    },
+    {
+      "id": "primera-rugosa",
+      "nombre": "Primera capa rugosa o con surcos",
+      "cat": "Adhesión",
+      "sintomas": [
+        "Líneas transparentes y aplastadas",
+        "La boquilla raspa",
+        "Huecos entre líneas en partes de la cama"
+      ],
+      "causas": [
+        "Boquilla demasiado baja o alta",
+        "Cama desnivelada",
+        "Placa con zonas gastadas"
+      ],
+      "pasos": [
+        {
+          "t": "Líneas con huecos: baja la boquilla. Líneas aplastadas con rebaba: súbela. Pasos de 0.02 mm."
+        },
+        {
+          "t": "Recalibra la malla de la cama con la placa caliente.",
+          "si": {
+            "niv": "auto"
+          }
+        },
+        {
+          "t": "Revisa la nivelación con papel en las esquinas.",
+          "si": {
+            "niv": "manual"
+          }
+        },
+        {
+          "t": "Si solo pasa en una zona, la placa puede estar doblada o gastada."
+        }
+      ],
+      "ajustes": [
+        "initial_layer_line_width: 0.5",
+        "initial_layer_speed: 30"
+      ],
+      "claves": [
+        "primera capa rugosa",
+        "surcos",
+        "primera capa fea",
+        "aplastad",
+        "z offset",
+        "zoffset"
+      ]
+    },
+    {
+      "id": "tpu",
+      "nombre": "TPU se atasca o se enreda en el extrusor",
+      "cat": "Extrusión",
+      "sintomas": [
+        "El filamento flexible se dobla dentro",
+        "Se para la extrusión"
+      ],
+      "causas": [
+        "Velocidad alta",
+        "Extrusor Bowden",
+        "Retracción larga"
+      ],
+      "pasos": [
+        {
+          "t": "Velocidad máxima ~3.5 mm³/s (25–30 mm/s)."
+        },
+        {
+          "t": "En Bowden usa TPU más duro (98A) o evita flexibles.",
+          "si": {
+            "ext": "bowden"
+          }
+        },
+        {
+          "t": "Retracción mínima o desactivada; seca el TPU."
+        },
+        {
+          "t": "No pases TPU por el AMS: aliméntalo desde el portacarrete externo.",
+          "si": {
+            "fw": "bambu"
+          }
+        }
+      ],
+      "ajustes": [
+        "filament_max_volumetric_speed: 3.5",
+        "retraction_length: 0–0.5"
+      ],
+      "claves": [
+        "tpu",
+        "flexible",
+        "se enreda en el extrusor"
+      ]
+    },
+    {
+      "id": "relleno-visible",
+      "nombre": "Se ve el relleno a través de las paredes",
+      "cat": "Superficie",
+      "claves": [
+        "se ve el relleno",
+        "se transparenta",
+        "marcas del relleno",
+        "patron en la pared",
+        "relleno se nota"
+      ],
+      "sintomas": [
+        "Se nota el patrón del relleno en las paredes",
+        "Marcas diagonales o cuadriculadas por fuera"
+      ],
+      "causas": [
+        "Pocas paredes",
+        "Relleno impreso antes que las paredes",
+        "Superposición relleno-pared alta",
+        "Velocidad de relleno muy alta"
+      ],
+      "pasos": [
+        {
+          "t": "Sube a 3 paredes como mínimo."
+        },
+        {
+          "t": "Imprime paredes antes que relleno (orden: pared interior/exterior → relleno)."
+        },
+        {
+          "t": "Baja la superposición relleno/pared a 15 %."
+        },
+        {
+          "t": "Baja la velocidad de relleno 20 %; el relleno rápido empuja la pared."
+        }
+      ],
+      "ajustes": [
+        "wall_loops: 3+",
+        "is_infill_first: no",
+        "infill_wall_overlap: 15%"
+      ]
+    },
+    {
+      "id": "cicatrices",
+      "nombre": "Rayones en la cara superior",
+      "cat": "Superficie",
+      "claves": [
+        "rayones",
+        "rayas arriba",
+        "cicatriz",
+        "la boquilla arrastra",
+        "marcas de viaje",
+        "raspa la superficie"
+      ],
+      "sintomas": [
+        "Líneas de arrastre sobre la tapa",
+        "Marcas de los viajes de la boquilla"
+      ],
+      "causas": [
+        "Sobre-extrusión en la capa superior",
+        "Sin Z-hop",
+        "Pieza que se curva hacia arriba"
+      ],
+      "pasos": [
+        {
+          "t": "Activa Z-hop de 0.4 mm solo en superficies superiores."
+        },
+        {
+          "t": "Calibra el flujo; la tapa sobrada levanta material."
+        },
+        {
+          "t": "Activa 'Evitar cruzar paredes' para que los viajes no pasen por encima."
+        },
+        {
+          "t": "Si la pieza se curva (curling), mejora el enfriamiento."
+        }
+      ],
+      "ajustes": [
+        "z_hop: 0.4",
+        "z_hop_types: Auto Lift",
+        "retract_lift_enforce: Top Only"
+      ]
+    },
+    {
+      "id": "curling",
+      "nombre": "Bordes de voladizos que se enroscan (curling)",
+      "cat": "Soportes",
+      "claves": [
+        "se enrosca",
+        "curling",
+        "se levanta el borde",
+        "se rizan",
+        "enroscan",
+        "se curvan los voladizos",
+        "voladizo se enrosca",
+        "bordes se enroscan",
+        "orillas del voladizo",
+        "se levantan los voladizos"
+      ],
+      "sintomas": [
+        "Las orillas de voladizos se levantan",
+        "La boquilla golpea esas orillas"
+      ],
+      "causas": [
+        "Enfriamiento insuficiente",
+        "Temperatura alta",
+        "Voladizos sin soporte",
+        "Velocidad alta en voladizos"
+      ],
+      "pasos": [
+        {
+          "t": "Ventilador al 100 % en voladizos (PLA)."
+        },
+        {
+          "t": "Baja 5–10 °C la temperatura."
+        },
+        {
+          "t": "Activa 'ralentizar en voladizos' y baja a 20–30 mm/s en los de más de 75 %."
+        },
+        {
+          "t": "Con PLA en impresora cerrada, abre la puerta: el aire caliente no enfría bien.",
+          "si": {
+            "cerr": true
+          }
+        },
+        {
+          "t": "Agrega soportes si el ángulo pasa de 50–55°."
+        }
+      ],
+      "ajustes": [
+        "overhang_fan_speed: 100",
+        "enable_overhang_speed: 1",
+        "overhang_3_4_speed: 30"
+      ]
+    },
+    {
+      "id": "esquinas",
+      "nombre": "Esquinas abultadas o redondeadas",
+      "cat": "Superficie",
+      "claves": [
+        "esquinas abultad",
+        "esquinas redonde",
+        "esquinas con bulto",
+        "bulging",
+        "esquinas gordas"
+      ],
+      "sintomas": [
+        "Las esquinas sobresalen",
+        "Las esquinas no quedan filosas"
+      ],
+      "causas": [
+        "Pressure advance / linear advance sin calibrar",
+        "Aceleración alta",
+        "Temperatura alta"
+      ],
+      "pasos": [
+        {
+          "t": "Calibra Pressure Advance en Orca (Calibración → Pressure advance) y guárdalo en el filamento.",
+          "si": {
+            "fw": "klipper"
+          }
+        },
+        {
+          "t": "Corre la calibración de flujo dinámico para ese filamento.",
+          "si": {
+            "fw": "bambu"
+          }
+        },
+        {
+          "t": "Activa y calibra Linear Advance (M900 K) en tu firmware.",
+          "si": {
+            "fw": "marlin"
+          }
+        },
+        {
+          "t": "Baja la aceleración de pared exterior a la mitad."
+        },
+        {
+          "t": "Baja 5 °C la temperatura."
+        }
+      ],
+      "ajustes": [
+        "pressure_advance: calibrar",
+        "outer_wall_acceleration: bajar"
+      ]
+    },
+    {
+      "id": "se-detiene",
+      "nombre": "La impresión se detiene a la mitad",
+      "cat": "Mecánica",
+      "claves": [
+        "se detiene",
+        "se para",
+        "se pauso",
+        "se paro",
+        "se queda a la mitad",
+        "dejo de imprimir",
+        "se apago"
+      ],
+      "sintomas": [
+        "La impresora se pausa sola",
+        "Se queda quieta o se apaga a medio trabajo"
+      ],
+      "causas": [
+        "Se acabó o se enredó el filamento",
+        "Corte de luz",
+        "Error térmico",
+        "Archivo o memoria dañados",
+        "Sensor de filamento sucio"
+      ],
+      "pasos": [
+        {
+          "t": "Revisa el carrete: un enredo bajo otras vueltas detiene el extrusor."
+        },
+        {
+          "t": "Mira el mensaje de error en pantalla y anótalo antes de reiniciar."
+        },
+        {
+          "t": "Usa un regulador o no-break: un parpadeo de luz reinicia la placa."
+        },
+        {
+          "t": "Reanuda con 'recuperación de energía' si tu impresora la tiene."
+        },
+        {
+          "t": "Si imprimes por Wi-Fi o nube y se corta, manda el archivo a la memoria o tarjeta.",
+          "si": {
+            "fw": "bambu"
+          }
+        },
+        {
+          "t": "Revisa el log (klippy.log) para ver el motivo exacto.",
+          "si": {
+            "fw": "klipper"
+          }
+        },
+        {
+          "t": "Cambia la memoria SD y vuelve a exportar el G-code.",
+          "si": {
+            "fw": "marlin"
+          }
+        }
+      ],
+      "ajustes": [
+        "Nada en el slicer"
+      ]
+    },
+    {
+      "id": "termico",
+      "nombre": "Error de temperatura (thermal runaway / termistor)",
+      "cat": "Mecánica",
+      "claves": [
+        "error de temperatura",
+        "thermal runaway",
+        "termistor",
+        "heating failed",
+        "no calienta la boquilla",
+        "temperatura baja de golpe",
+        "error termico",
+        "maxtemp",
+        "mintemp"
+      ],
+      "sintomas": [
+        "La impresora muestra error de calentamiento",
+        "La temperatura sube y baja sin control"
+      ],
+      "causas": [
+        "Cable del termistor o calentador flojo",
+        "Ventilador de capa soplando al bloque",
+        "Termistor dañado",
+        "Calcetín de silicona faltante"
+      ],
+      "pasos": [
+        {
+          "t": "APAGA y desconecta la impresora antes de revisar cables. Un calentador sin control es riesgo de incendio."
+        },
+        {
+          "t": "Revisa que el calcetín de silicona esté puesto en el bloque calefactor."
+        },
+        {
+          "t": "Revisa conectores del termistor y del calentador; mueve el cabezal y mira si el error aparece."
+        },
+        {
+          "t": "Calibra el PID: M303 E0 S220 C8 y guarda con M500.",
+          "si": {
+            "fw": "marlin"
+          }
+        },
+        {
+          "t": "Calibra el PID: PID_CALIBRATE HEATER=extruder TARGET=220 y SAVE_CONFIG.",
+          "si": {
+            "fw": "klipper"
+          }
+        },
+        {
+          "t": "Si sigue, cambia el termistor o el hotend completo; consulta soporte de la marca.",
+          "si": {
+            "fw": "bambu"
+          }
+        }
+      ],
+      "ajustes": [
+        "Nada en el slicer: es hardware"
+      ]
+    },
+    {
+      "id": "molido",
+      "nombre": "El extrusor muele o muerde el filamento",
+      "cat": "Extrusión",
+      "claves": [
+        "muele",
+        "mordid",
+        "polvo de filamento",
+        "grinding",
+        "patina",
+        "marcas en el filamento",
+        "se come el filamento"
+      ],
+      "sintomas": [
+        "Polvo de plástico en los engranes",
+        "Filamento con mordidas profundas",
+        "El extrusor patina"
+      ],
+      "causas": [
+        "Boquilla tapada o semi-tapada",
+        "Velocidad más alta que el flujo",
+        "Temperatura baja",
+        "Presión del tensor demasiado alta"
+      ],
+      "pasos": [
+        {
+          "t": "Limpia la boquilla (purga en frío) y revisa que no esté tapada."
+        },
+        {
+          "t": "Baja la velocidad o el flujo volumétrico máximo."
+        },
+        {
+          "t": "Sube 5–10 °C."
+        },
+        {
+          "t": "Limpia los engranes con cepillo y quita el polvo de filamento."
+        },
+        {
+          "t": "Afloja un poco el tensor del extrusor si es ajustable.",
+          "si": {
+            "fw": "marlin"
+          }
+        }
+      ],
+      "ajustes": [
+        "filament_max_volumetric_speed: bajar",
+        "Temperatura: +5 °C"
+      ]
+    },
+    {
+      "id": "quebradizo",
+      "nombre": "El filamento se rompe solo",
+      "cat": "Extrusión",
+      "claves": [
+        "se rompe el filamento",
+        "quebradizo",
+        "se quiebra",
+        "fragil",
+        "se troza",
+        "se truena el filamento",
+        "se rompe solo",
+        "se rompe solito",
+        "filamento quebradizo",
+        "se quiebra el filamento",
+        "filamento se rompe"
+      ],
+      "sintomas": [
+        "El filamento se parte en el tubo o en el carrete",
+        "Pedazos rotos dentro del extrusor"
+      ],
+      "causas": [
+        "PLA viejo o que absorbió humedad",
+        "Curvas muy cerradas en el recorrido",
+        "Carrete guardado en sol o calor"
+      ],
+      "pasos": [
+        {
+          "t": "Seca el PLA a 50 °C 6–8 h; recupera flexibilidad."
+        },
+        {
+          "t": "Evita curvas cerradas: acomoda el carrete para que el filamento entre recto."
+        },
+        {
+          "t": "Guarda los carretes en caja hermética lejos del sol."
+        },
+        {
+          "t": "Si se rompió dentro del AMS o tubo, sácalo por completo antes de cargar otro.",
+          "si": {
+            "fw": "bambu"
+          }
+        }
+      ],
+      "ajustes": [
+        "Nada en el slicer"
+      ]
+    },
+    {
+      "id": "vfa",
+      "nombre": "Líneas verticales finas o textura 'piel de salmón'",
+      "cat": "Superficie",
+      "claves": [
+        "piel de salmon",
+        "lineas verticales",
+        "vfa",
+        "textura rara",
+        "rayas verticales",
+        "patron fino en la pared",
+        "escamas"
+      ],
+      "sintomas": [
+        "Rayitas verticales finas y regulares",
+        "Textura tipo escamas en paredes rectas"
+      ],
+      "causas": [
+        "Resonancia de motores a ciertas velocidades",
+        "Poleas o bandas",
+        "Drivers en modo silencioso"
+      ],
+      "pasos": [
+        {
+          "t": "Cambia la velocidad de pared exterior (prueba 150, 200, 250 mm/s); estas marcas aparecen en velocidades concretas."
+        },
+        {
+          "t": "Revisa tensión de bandas y que poleas no estén excéntricas."
+        },
+        {
+          "t": "Imprime con el modo de velocidad 'Estándar', no 'Silencioso'.",
+          "si": {
+            "fw": "bambu"
+          }
+        },
+        {
+          "t": "Prueba desactivar stealthChop en los drivers (modo spreadCycle).",
+          "si": {
+            "fw": "klipper"
+          }
+        }
+      ],
+      "ajustes": [
+        "outer_wall_speed: probar otros valores"
+      ]
+    },
+    {
+      "id": "cama-no-calienta",
+      "nombre": "La cama no calienta o tarda mucho",
+      "cat": "Mecánica",
+      "claves": [
+        "cama no calienta",
+        "cama fria",
+        "no llega a temperatura",
+        "tarda en calentar",
+        "heatbed",
+        "cama tibia"
+      ],
+      "sintomas": [
+        "La temperatura de cama no sube",
+        "Error de calentamiento de cama"
+      ],
+      "causas": [
+        "Cable de la cama dañado (se dobla con el movimiento)",
+        "Conector flojo",
+        "Fuente insuficiente",
+        "Ambiente muy frío o corriente de aire"
+      ],
+      "pasos": [
+        {
+          "t": "Apaga y revisa el cable que va a la cama: es el que más se dobla y se quema."
+        },
+        {
+          "t": "Revisa conectores en la cama y en la placa; uno ennegrecido debe cambiarse."
+        },
+        {
+          "t": "En cama móvil, revisa que el cable no roce al llegar al final del recorrido.",
+          "si": {
+            "cin": "cama-y"
+          }
+        },
+        {
+          "t": "Si hay corrientes de aire frío, pon la impresora en un lugar protegido."
+        }
+      ],
+      "ajustes": [
+        "Nada en el slicer: es hardware"
+      ]
+    },
+    {
+      "id": "multicolor",
+      "nombre": "Sistema multicolor (AMS, CFS, MMU) no carga",
+      "cat": "Extrusión",
+      "claves": [
+        "ams",
+        "cfs",
+        "mmu",
+        "multicolor",
+        "no carga el filamento",
+        "atorado en el ams",
+        "cambio de color falla",
+        "no jala"
+      ],
+      "sintomas": [
+        "Error al cargar o descargar",
+        "Filamento atorado entre el sistema y el cabezal"
+      ],
+      "causas": [
+        "Punta de filamento mal cortada o aplastada",
+        "Carrete de cartón que patina",
+        "Tubo PTFE doblado o desconectado",
+        "Filamento húmedo o enredado"
+      ],
+      "pasos": [
+        {
+          "t": "Corta la punta del filamento en diagonal y limpia antes de cargar."
+        },
+        {
+          "t": "Usa adaptador para carretes de cartón; patinan y dan error.",
+          "si": {
+            "fw": "bambu"
+          }
+        },
+        {
+          "t": "Revisa que los tubos PTFE estén bien metidos y sin dobleces."
+        },
+        {
+          "t": "No uses TPU ni filamentos con fibra muy abrasiva en sistemas que no lo soportan."
+        },
+        {
+          "t": "Saca el filamento atorado por la parte de atrás; nunca lo jales con la boquilla fría."
+        }
+      ],
+      "ajustes": [
+        "flush_volumes: ajustar si hay manchas de color"
+      ]
+    },
+    {
+      "id": "muy-pegado",
+      "nombre": "La pieza no se despega de la cama",
+      "cat": "Adhesión",
+      "claves": [
+        "no se despega",
+        "muy pegad",
+        "no la puedo quitar",
+        "se pego demasiado",
+        "arranco la placa",
+        "se lleva el pei",
+        "no puedo quitar",
+        "no se suelta",
+        "no sale de la cama",
+        "no la puedo despegar",
+        "no se puede despegar",
+        "esta muy pegada"
+      ],
+      "sintomas": [
+        "Hay que hacer palanca para quitarla",
+        "Se arrancan pedazos de la placa"
+      ],
+      "causas": [
+        "PETG o TPU sobre PEI liso",
+        "Primera capa demasiado aplastada",
+        "Cama aún caliente"
+      ],
+      "pasos": [
+        {
+          "t": "Deja enfriar la cama por completo y flexiona la placa: la mayoría se suelta sola."
+        },
+        {
+          "t": "Para PETG/TPU en PEI liso usa pegamento de barra como separador."
+        },
+        {
+          "t": "Sube el Z-offset 0.02–0.04 mm."
+        },
+        {
+          "t": "Nunca uses herramientas metálicas en placas PEI; usa espátula de plástico."
+        }
+      ],
+      "ajustes": [
+        "Z-offset: +0.02 mm"
+      ]
+    },
+    {
+      "id": "escalones",
+      "nombre": "Escalones visibles en curvas suaves",
+      "cat": "Superficie",
+      "claves": [
+        "escalones",
+        "se notan las capas",
+        "curvas escalonadas",
+        "escalera",
+        "stair",
+        "domo con escalones"
+      ],
+      "sintomas": [
+        "Las curvas de arriba se ven como escalera",
+        "Domos y techos con capas marcadas"
+      ],
+      "causas": [
+        "Capa alta para la curvatura",
+        "Orientación"
+      ],
+      "pasos": [
+        {
+          "t": "Usa altura de capa variable (adaptativa) en el slicer: capa fina solo en curvas."
+        },
+        {
+          "t": "Baja la capa a 0.12 mm en piezas decorativas."
+        },
+        {
+          "t": "Reorienta: las curvas se ven mejor de lado que de frente al techo."
+        }
+      ],
+      "ajustes": [
+        "Altura de capa variable: activar",
+        "layer_height: 0.12"
+      ]
+    },
+    {
+      "id": "detalles-finos",
+      "nombre": "Detalles finos o paredes delgadas desaparecen",
+      "cat": "Estructura",
+      "claves": [
+        "detalles desaparecen",
+        "pared delgada",
+        "no imprime partes finas",
+        "faltan detalles",
+        "letras no salen",
+        "texto no sale"
+      ],
+      "sintomas": [
+        "Partes delgadas no aparecen en el slicer",
+        "Letras pequeñas salen incompletas"
+      ],
+      "causas": [
+        "Paredes más delgadas que la boquilla",
+        "Generador de paredes clásico"
+      ],
+      "pasos": [
+        {
+          "t": "Usa generador de paredes Arachne (detecta paredes delgadas)."
+        },
+        {
+          "t": "Activa 'detectar paredes delgadas'."
+        },
+        {
+          "t": "Para detalle real usa boquilla de 0.2 mm y capa de 0.08 mm."
+        },
+        {
+          "t": "Engrosa el diseño: mínimo 0.8 mm para detalles con boquilla 0.4."
+        }
+      ],
+      "ajustes": [
+        "wall_generator: arachne",
+        "detect_thin_wall: 1"
+      ]
+    },
+    {
+      "id": "petg-grumos",
+      "nombre": "Grumos de PETG pegados a la boquilla",
+      "cat": "Extrusión",
+      "claves": [
+        "grumos",
+        "bolitas en la boquilla",
+        "petg se pega a la boquilla",
+        "gotas cafes",
+        "manchas cafes",
+        "quemado en la pieza"
+      ],
+      "sintomas": [
+        "Se acumula plástico en la boquilla",
+        "Caen gotas cafés sobre la pieza"
+      ],
+      "causas": [
+        "PETG demasiado caliente",
+        "Primera capa muy aplastada",
+        "Retracción o Z-hop insuficientes",
+        "Boquilla sin limpiar"
+      ],
+      "pasos": [
+        {
+          "t": "Baja 5–10 °C."
+        },
+        {
+          "t": "Sube el Z-offset 0.02–0.05 mm para PETG; no lo aplastes como PLA."
+        },
+        {
+          "t": "Activa Z-hop de 0.4 mm."
+        },
+        {
+          "t": "Limpia la boquilla caliente con cepillo de bronce antes de imprimir."
+        },
+        {
+          "t": "Revisa el limpiador de boquilla (wiper) de la máquina.",
+          "si": {
+            "fw": "bambu"
+          }
+        }
+      ],
+      "ajustes": [
+        "Temperatura: −5 °C",
+        "z_hop: 0.4"
+      ]
+    },
+    {
+      "id": "capas-faltantes",
+      "nombre": "Faltan capas o hay huecos horizontales",
+      "cat": "Estructura",
+      "claves": [
+        "faltan capas",
+        "hueco horizontal",
+        "capa saltada",
+        "una capa no salio",
+        "franja vacia"
+      ],
+      "sintomas": [
+        "Una franja horizontal sin material",
+        "Capa débil que se separa"
+      ],
+      "causas": [
+        "Atasco momentáneo",
+        "Eje Z que se traba",
+        "Filamento enredado unos segundos"
+      ],
+      "pasos": [
+        {
+          "t": "Revisa el carrete y el recorrido del filamento."
+        },
+        {
+          "t": "Limpia y lubrica el eje Z; muévelo a mano con la impresora apagada y siente si se traba."
+        },
+        {
+          "t": "Haz purga en frío para descartar basura en la boquilla."
+        }
+      ],
+      "ajustes": [
+        "Nada en el slicer"
+      ]
+    },
+    {
+      "id": "sobrecalentado",
+      "nombre": "Partes pequeñas derretidas o deformadas",
+      "cat": "Superficie",
+      "claves": [
+        "derretid",
+        "deforma",
+        "se funde",
+        "punta derretida",
+        "chorreado",
+        "sobrecalent",
+        "pierde forma"
+      ],
+      "sintomas": [
+        "Puntas o partes pequeñas sin forma",
+        "Capas superiores aguadas"
+      ],
+      "causas": [
+        "Tiempo por capa muy corto",
+        "Poco ventilador",
+        "Temperatura alta"
+      ],
+      "pasos": [
+        {
+          "t": "Sube el tiempo mínimo por capa a 8–10 s (el slicer frenará)."
+        },
+        {
+          "t": "Imprime dos copias a la vez para que cada una se enfríe."
+        },
+        {
+          "t": "Ventilador 100 % en PLA y baja 5 °C."
+        }
+      ],
+      "ajustes": [
+        "slow_down_layer_time: 8",
+        "fan_max_speed: 100"
+      ]
+    },
+    {
+      "id": "tambaleo",
+      "nombre": "Pieza alta se tambalea, dobla o se cae",
+      "cat": "Estructura",
+      "claves": [
+        "se tambalea",
+        "se dobla",
+        "se mece",
+        "pieza alta",
+        "se cae la pieza alta",
+        "torre se cae",
+        "se inclina",
+        "pieza alta se cae",
+        "se dobla la pieza alta",
+        "se cae la pieza"
+      ],
+      "sintomas": [
+        "Las capas superiores salen chuecas",
+        "La pieza se mueve con la boquilla"
+      ],
+      "causas": [
+        "Base pequeña para la altura",
+        "Aceleración alta (sobre todo en cama móvil)",
+        "Calor acumulado"
+      ],
+      "pasos": [
+        {
+          "t": "Brim de 5–8 mm o agrega un 'muro' de soporte en el diseño."
+        },
+        {
+          "t": "Baja la aceleración 30–50 % en la parte alta."
+        },
+        {
+          "t": "En cama móvil la pieza alta se mece con la cama: reduce aceleración en Y.",
+          "si": {
+            "cin": "cama-y"
+          }
+        },
+        {
+          "t": "Imprime varias piezas juntas o acuéstala si el uso lo permite."
+        }
+      ],
+      "ajustes": [
+        "brim_width: 6",
+        "default_acceleration: −40 %"
+      ]
+    },
+    {
+      "id": "choque",
+      "nombre": "La boquilla choca con la pieza",
+      "cat": "Mecánica",
+      "claves": [
+        "choca",
+        "golpea la pieza",
+        "pega con la pieza",
+        "tumba la pieza",
+        "golpes",
+        "la boquilla le pega"
+      ],
+      "sintomas": [
+        "Se oyen golpes",
+        "La boquilla tumba o mueve la pieza"
+      ],
+      "causas": [
+        "Curling en voladizos",
+        "Sobre-extrusión",
+        "Warping",
+        "Sin Z-hop"
+      ],
+      "pasos": [
+        {
+          "t": "Activa Z-hop de 0.4 mm."
+        },
+        {
+          "t": "Corrige el curling: más ventilador y menos temperatura."
+        },
+        {
+          "t": "Calibra el flujo."
+        },
+        {
+          "t": "Revisa adhesión y warping."
+        }
+      ],
+      "ajustes": [
+        "z_hop: 0.4"
+      ]
+    },
+    {
+      "id": "ruido",
+      "nombre": "Ruidos, vibraciones o rechinidos",
+      "cat": "Mecánica",
+      "claves": [
+        "ruido",
+        "rechina",
+        "vibra",
+        "chirrido",
+        "zumbido",
+        "golpeteo",
+        "suena feo"
+      ],
+      "sintomas": [
+        "Ruidos nuevos al moverse",
+        "Vibración fuerte en la mesa"
+      ],
+      "causas": [
+        "Rieles o varillas secos",
+        "Ventilador sucio o dañado",
+        "Banda rozando",
+        "Mesa inestable"
+      ],
+      "pasos": [
+        {
+          "t": "Limpia y lubrica rieles/varillas con el lubricante recomendado."
+        },
+        {
+          "t": "Identifica el ruido: si cambia con la temperatura es un ventilador."
+        },
+        {
+          "t": "Revisa bandas que rocen con poleas o carcasas."
+        },
+        {
+          "t": "Pon la impresora sobre una base pesada o tapete antivibración."
+        },
+        {
+          "t": "Corre la calibración de vibración y revisa el mantenimiento en la app.",
+          "si": {
+            "fw": "bambu"
+          }
+        }
+      ],
+      "ajustes": [
+        "Nada en el slicer: mantenimiento"
+      ]
+    },
+    {
+      "id": "huecos-inicio",
+      "nombre": "Huecos al inicio de cada línea",
+      "cat": "Extrusión",
+      "claves": [
+        "huecos al inicio",
+        "empieza sin material",
+        "inicio de linea",
+        "despues de retraer",
+        "falta al empezar"
+      ],
+      "sintomas": [
+        "Cada línea empieza delgada o con hueco",
+        "Paredes con huecos tras los viajes"
+      ],
+      "causas": [
+        "Retracción excesiva",
+        "Filamento que escurre en viajes largos",
+        "Pressure advance alto"
+      ],
+      "pasos": [
+        {
+          "t": "Baja la retracción 0.2 mm a la vez."
+        },
+        {
+          "t": "Agrega 0.05–0.1 mm de extra al recuperar (extra length on restart)."
+        },
+        {
+          "t": "Revisa pressure advance: un valor alto deja huecos al inicio."
+        }
+      ],
+      "ajustes": [
+        "retraction_length: bajar",
+        "retract_restart_extra: 0.05"
+      ]
+    },
+    {
+      "id": "colores",
+      "nombre": "Manchas o mezcla de colores en cambios de color",
+      "cat": "Superficie",
+      "claves": [
+        "mancha de color",
+        "se mezclan los colores",
+        "color sucio",
+        "cambio de color",
+        "residuo de otro color"
+      ],
+      "sintomas": [
+        "El color nuevo trae restos del anterior",
+        "Manchas en las primeras capas de cada color"
+      ],
+      "causas": [
+        "Volumen de purga bajo",
+        "Cambiar de oscuro a claro"
+      ],
+      "pasos": [
+        {
+          "t": "Sube los volúmenes de purga (flushing volumes) de colores oscuros a claros."
+        },
+        {
+          "t": "Activa 'purgar en relleno' o 'purgar en objeto' para aprovechar el desperdicio."
+        },
+        {
+          "t": "Agrupa colores para reducir cambios."
+        }
+      ],
+      "ajustes": [
+        "flush_volumes_matrix: subir oscuro→claro",
+        "flush_into_infill: 1"
+      ]
+    },
+    {
+      "id": "soportes-caen",
+      "nombre": "Los soportes se caen o no se forman",
+      "cat": "Soportes",
+      "claves": [
+        "soporte se cae",
+        "soportes caidos",
+        "no salen los soportes",
+        "soporte se despega",
+        "soporte espagueti"
+      ],
+      "sintomas": [
+        "Soportes que se doblan o despegan",
+        "Espagueti bajo voladizos"
+      ],
+      "causas": [
+        "Soportes delgados y altos",
+        "Base del soporte pequeña",
+        "Velocidad alta en soportes"
+      ],
+      "pasos": [
+        {
+          "t": "Usa soportes árbol (más estables) y activa base/brim de soporte."
+        },
+        {
+          "t": "Baja velocidad de soportes a 60–80 mm/s."
+        },
+        {
+          "t": "Sube densidad de soporte a 20 %."
+        }
+      ],
+      "ajustes": [
+        "support_type: tree(auto)",
+        "support_speed: 80",
+        "raft_first_layer_expansion: 2"
+      ]
+    },
+    {
+      "id": "altura-z",
+      "nombre": "La altura de la pieza no coincide",
+      "cat": "Estructura",
+      "claves": [
+        "altura incorrecta",
+        "mide menos",
+        "mide mas de alto",
+        "z no coincide",
+        "mas chaparra"
+      ],
+      "sintomas": [
+        "La pieza mide más o menos de alto que el diseño"
+      ],
+      "causas": [
+        "Primera capa muy aplastada",
+        "Pasos del eje Z mal calibrados",
+        "Altura de capa no múltiplo del motor"
+      ],
+      "pasos": [
+        {
+          "t": "Revisa la primera capa: aplastada reduce la altura total."
+        },
+        {
+          "t": "Imprime un cubo de 20 mm y mide; ajusta pasos Z (M92 Z) si la diferencia es constante.",
+          "si": {
+            "fw": "marlin"
+          }
+        },
+        {
+          "t": "Usa alturas de capa múltiplos de 0.04 mm."
+        }
+      ],
+      "ajustes": [
+        "layer_height: múltiplo de 0.04"
+      ]
+    }
+  ]
+}
